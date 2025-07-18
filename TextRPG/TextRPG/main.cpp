@@ -1,98 +1,24 @@
-#include <stdio.h>
+ï»¿#include "Struct.h"
+#include "Player.h"
+#include "Monster.h"
 
-void InitPlayerStatus(unsigned int* hp, unsigned int* mp, unsigned int* atk, int animal_type)
-{
-	switch (animal_type)
-	{
-	case 1:
-		*hp = 100;
-		*mp = 100;
-		*atk = 10;
-		break;
-	case 2:
-		*hp = 80;
-		*mp = 100;
-		*atk = 12;
-		break;
-	case 3:
-		*hp = 60;
-		*mp = 100;
-		*atk = 12;
-		break;
-	case 4:
-		*hp = 150;
-		*mp = 80;
-		*atk = 10;
-		break;
-	case 5:
-		*hp = 100;
-		*mp = 150;
-		*atk = 5;
-		break;
-	}
-}
+int floorNum = 0;
+int playerLevel = 1;
 
 int main()
 {
-	unsigned int ani_sel;
-	unsigned int player_hp;
-	unsigned int player_mp;
-	unsigned int player_atk;
+	srand(unsigned(time(NULL)));
+	Player player;
+	Monster monster;
 
-	bool isSelect = false;
-	printf("============================================================\n");
-	printf("============µ¿¹° ³óÀå¿¡ ¿À½Å °ÍÀ» È¯¿µÇÕ´Ï´Ù!=================\n");
-	printf("============================================================\n\n");
-	
-	// Ä³¸¯ÅÍ ¼±ÅÃ
-	while (!isSelect)
-	{
-		printf("ÇÃ·¹ÀÌ ÇÏ°íÀÚ ÇÏ´Â µ¿¹°À» °ñ¶óÁÖ¼¼¿ä!\n");
-		printf("1. °­¾ÆÁö\t2.°í¾çÀÌ\t3.Åä³¢\t4.°ÅºÏÀÌ\t5.ÄõÄ«\n");
-		printf("´ç½ÅÀÇ ¼±ÅÃÀº?? ");
-
-		scanf_s("%u", &ani_sel);
-
-		switch (ani_sel)
-		{
-		case 1:
-			printf("°­¾ÆÁö ¼±ÅÃ!\n\n");
-			isSelect = true;
-			break;
-		case 2:
-			printf("°í¾çÀÌ ¼±ÅÃ!\n\n");
-			isSelect = true;
-			break;
-		case 3:
-			printf("Åä³¢ ¼±ÅÃ!\n\n");
-			isSelect = true;
-			break;
-		case 4:
-			printf("°ÅºÏÀÌ ¼±ÅÃ!\n\n");
-			isSelect = true;
-			break;
-		case 5:
-			printf("ÄõÄ« ¼±ÅÃ!\n\n");
-			isSelect = true;
-			break;
-		default:
-			printf("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ¼±ÅÃÇØÁÖ¼¼¿ä!\n\n");
-			break;
-		}
-
-	}
-
-	InitPlayerStatus(&player_hp, &player_mp, &player_atk, ani_sel);
+	printf("ì ì—ì„œ ê¹¬ë‹¤..\n");
+	SelectAnimal(&player);
+	// PrintStatus(&player);
 
 	while (1)
 	{
-		int select;
-		printf("ÇÏ°íÀÚ ÇÏ´Â ÀÛ¾÷À» ¼±ÅÃÇÏ¼¼¿ä!\n");
-		printf("1.´øÀü\t2.¸¶À»\t3.»óÅÂ È®ÀÎ\n\n");
-		scanf_s("%d", &select);
+		SelectAction(&player, &monster);
 	}
-
-
-
 	return 0;
 }
+
