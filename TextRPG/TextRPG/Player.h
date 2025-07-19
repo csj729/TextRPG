@@ -2,7 +2,6 @@
 #include "Struct.h"
 #include "Monster.h"
 
-
 // 동물 선택
 void SelectAnimal(Player* player);
 // 상태 출력
@@ -13,3 +12,4 @@ void InitInven(const Player* player);
 void SelectAction(Player* player, Monster* monster);
 // 전투
 void Battle(Player* player, Monster* monster);
+

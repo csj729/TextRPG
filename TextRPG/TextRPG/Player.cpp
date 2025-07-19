@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Inventory.h"
+#include "Monster.h"
 
 void SelectAnimal(Player* player)
 {
@@ -110,11 +111,11 @@ void PrintStatus(const Player* player)
 
 void InitInven(Player* player)
 {
-	for (int i = 0; i < GEARITEM_NUM; ++i)
-		player->Gearitem[i] = MakeEmptyItem();
+	for (int i = 0; i < EQUIPITEM_NUM; ++i)
+		player->EquipItem[i] = MakeEmptyItem();
 
-	for (int i = 0; i < USEITEM_NUM; ++i)
-		player->Useitem[i] = MakeEmptyItem();
+	for (int i = 0; i < CONSUMEITEM_NUM; ++i)
+		player->ConsumeItem[i] = MakeEmptyItem();
 }
 
 void SelectAction(Player* player, Monster* monster)
@@ -204,9 +205,10 @@ void Battle(Player* player, Monster* monster)
 		{
 		case 1:
 		{
+			// 최종데미지 계산 로직 실행 후 몬스터 hp - 최종데미지
 			printf("공격!!\n");
 			realDmg_PtoM = player->info.atk;
-			monster->hp -= realDmg_PtoM;
+			monster->info.hp -= realDmg_PtoM;
 			break;
 		}
 		case 2:
@@ -232,16 +234,25 @@ void Battle(Player* player, Monster* monster)
 		// 올바른 입력 시 입력에 따른 결과와 최종 데미지 합산하여 준 피해와 받은 피해 출력.
 		if (isCorrect)
 		{
-			realDmg_MtoP = monster->atk;
+			// 몬스터의 최종 데미지 계산 후 플레이어 hp - 최종데미지
+			realDmg_MtoP = monster->info.atk;
 			player->info.hp -= realDmg_MtoP;
-			printf_s("%s에게 %d 데미지를 주었습니다!!\n", monster->name.c_str(), realDmg_PtoM);
+			printf_s("%s에게 %d 데미지를 주었습니다!!\n", monster->info.name.c_str(), realDmg_PtoM);
 			printf_s("%s는 %d 피해를 입었습니다!!\n\n", player->info.name.c_str(), realDmg_MtoP);
 		}
 
 		// 몬스터 사망 시 전리품 획득과 전투 종료
-		if (monster->hp <= 0)
+		if (monster->info.hp <= 0)
 		{
-			printf("%s를 처치했다!!\n", monster->name.c_str());
+			printf("%s를 처치했다!!\n", monster->info.name.c_str());
+
+			const Item* dropItem = RollDrop(monster->dropTable);
+			if (!dropItem)
+				printf("아이템이 드랍되지 않았습니다..\n");
+			else
+				printf("%s를 획득했습니다!!", dropItem->name.c_str());
+
+			PutInven(player, dropItem);
 			// 전리품 획득 문구 출력 후 전리품 획득 구현
 			Sleep(2000);
 			system("cls");
