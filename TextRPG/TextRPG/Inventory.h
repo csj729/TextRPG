@@ -5,4 +5,5 @@
 
 Inven MakeEmptyItem();
 void PrintInven(const Player* player);
+void PrintEquip(const Player* player);
 void PutInven(Player* player, const Item* item);

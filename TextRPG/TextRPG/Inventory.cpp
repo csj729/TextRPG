@@ -6,31 +6,67 @@ Inven MakeEmptyItem() {
 
 void PrintInven(const Player* player)
 {
-	std::cout << "현재 장비 : ";
-	if (player->EquipItem[0].name == "")
-		std::cout << "장비 없음\n";
-	else 
-	{
-		for (int i = 0; player->EquipItem[i].name != ""; i++)
-		{
-			std::cout << player->EquipItem[i].name << " ";
-		}
-		std::cout << "\n";
-	}
+	std::cout << "현재 인벤토리 : ";
+	if (player->ItemList[0].name == "")
+		printf("인벤토리 비어있음!!\n");
 
-	std::cout << "현재 소비 아이템 : ";
-	if (player->ConsumeItem[0].name == "")
-		std::cout << "소비 아이템 없음\n";
 	else
 	{
-		for (int i = 0; player->ConsumeItem[i].name != ""; i++)
-		{
-			std::cout << player->ConsumeItem[i].name << " ";
-		}
-		std::cout << "\n";
+		for (int i = 0; player->ItemList[i].name != ""; i++)
+			printf("%d. %s ", i+1, player->ItemList[i].name.c_str());
+
+		printf("\n");
 	}
 }
 
+void PrintEquip(const Player* player)
+{
+	printf("\n현재 장착된 장비\n");
+	printf("===================\n");
+	for (int i = 0; i < EQUIPITEM_NUM; i++)
+	{
+		if (i == ITEM_EQUIPWEAPON)
+		{
+			if (player->EquipList[i].name == "")
+				printf("무기 장착 X\n");
+			else
+				printf("무기 %s\n", player->EquipList[i].name.c_str());
+		}
+		else if (i == ITEM_EQUIPBODY)
+		{
+			if (player->EquipList[i].name == "")
+				printf("몸통 장착 X\n");
+			else
+				printf("몸통 %s\n", player->EquipList[i].name.c_str());
+		}
+		else if (i == ITEM_EQUIPHEAD)
+		{
+			if (player->EquipList[i].name == "")
+				printf("머리 장착 X\n");
+			else
+				printf("머리 %s\n", player->EquipList[i].name.c_str());
+		}
+		else if (i == ITEM_EQUIPGLOVES)
+		{
+			if (player->EquipList[i].name == "")
+				printf("장갑 장착 X\n");
+			else
+				printf("장갑 %s\n", player->EquipList[i].name.c_str());
+		}
+		else if (i == ITEM_EQUIPLEG)
+		{
+			if (player->EquipList[i].name == "")
+				printf("다리 장착 X\n");
+			else
+				printf("다리 %s\n", player->EquipList[i].name.c_str());
+		}
+		else
+		{
+			printf("장착 장비 출력 오류오류오류오류!!!!!!!!!!!!\n\n\n");
+		}
+
+	}
+}
 void PutInven(Player* player, const Item* item)
 {
 	if (!item)
@@ -38,39 +74,18 @@ void PutInven(Player* player, const Item* item)
 
 	else
 	{
-		if (item->itemType == ITEM_CONSUME)
+		for (int i = 0; i < INVENTORY_SIZE; i++)
 		{
-			for (int i = 0; i < CONSUMEITEM_NUM; i++)
+			if (player->ItemList[i].name == "")
 			{
-				if (player->ConsumeItem[i].name == "")
-				{
-					player->ConsumeItem[i] = *item;
-					break;
-				}
-
-				if (i == CONSUMEITEM_NUM - 1)
-					printf("소지품이 가득찼습니다!\n");
+				player->ItemList[i] = *item;
+				break;
 			}
-			
+
+			if (i == INVENTORY_SIZE - 1)
+				printf("소지품이 가득찼습니다!\n");
 		}
 
-		else if (item->itemType == ITEM_EQUIP)
-		{
-			for (int i = 0; i < EQUIPITEM_NUM; i++)
-			{
-				if (player->EquipItem[i].name == "")
-				{
-					player->EquipItem[i] = *item;
-					break;
-				}
-
-				if (i == EQUIPITEM_NUM - 1)
-					printf("소지품이 가득찼습니다!\n");
-			}
-		}
-
-		else
-			printf("아이템 타입이 정의되지 않았습니다!\n");
 	}
 	
 }

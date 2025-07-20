@@ -1,23 +1,28 @@
 ﻿#include "Struct.h"
 #include "Player.h"
 #include "Monster.h"
+#include "Merchant.h"
 
 int floorNum = 0;
-int playerLevel = 1;
+StoreTable storeTable[STORETABLE_MAXNUM];
 
 int main()
 {
 	srand(unsigned(time(NULL)));
 	Player player;
 	Monster monster;
+	Merchant merchant;
+
 
 	printf("잠에서 깬다..\n");
 	SelectAnimal(&player);
+	InitInven(&player);
+	InitStoreTable(storeTable);
 	// PrintStatus(&player);
 
 	while (1)
 	{
-		SelectAction(&player, &monster);
+		SelectAction(&player, &monster, &merchant);
 	}
 	return 0;
 }
