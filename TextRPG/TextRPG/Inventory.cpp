@@ -107,7 +107,7 @@ void CompactItemList(Player* player) {
 				// 유효한 아이템을 앞으로 이동
 				player->ItemList[insertPos] = player->ItemList[i];
 				// 원래 위치 초기화
-				memset(&player->ItemList[i], 0, sizeof(Item));
+				player->ItemList[i] = MakeEmptyItem();
 			}
 			insertPos++;
 		}
@@ -115,6 +115,6 @@ void CompactItemList(Player* player) {
 
 	// 나머지 뒷부분 초기화
 	for (int i = insertPos; i < INVENTORY_SIZE; i++) {
-		memset(&player->ItemList[i], 0, sizeof(Item));
+		player->ItemList[i] = MakeEmptyItem();
 	}
 }

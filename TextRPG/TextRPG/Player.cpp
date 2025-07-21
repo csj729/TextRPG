@@ -249,7 +249,7 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 		case 4:
 		{
 			PrintEquip(player);
-			printf("어느 장비를 해제하겠습니까?\n");
+			printf("어느 장비를 해제하겠습니까? (해제하고자 하는 부위명 입력, 나가기는 취소 입력)\n");
 			UneqiupItem(player);
 			break;
 		}
@@ -573,7 +573,7 @@ void UneqiupItem(Player* player)
 		player->EquipList[ITEM_EQUIPWEAPON] = MakeEmptyItem();
 		printf("무기를 해제했습니다!\n");
 	}
-	
+
 	else if (strcmp(selEquip, "몸통") == 0)
 	{
 		player->info.maxHp -= player->EquipList[ITEM_EQUIPBODY].maxHp;
@@ -632,6 +632,12 @@ void UneqiupItem(Player* player)
 		PutInven(player, &player->EquipList[ITEM_EQUIPHEAD]);
 		player->EquipList[ITEM_EQUIPHEAD] = MakeEmptyItem();
 		printf("머리를 해제했습니다!\n");
+	}
+
+	else if (strcmp(selEquip, "취소") == 0)
+	{
+		system("cls");
+		return;
 	}
 
 	else
