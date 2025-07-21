@@ -25,7 +25,6 @@ enum ItemType
 	ITEM_EQUIPLEG,
 	ITEM_NONE,
 	ITEM_CONSUME,
-	ITEM_QUEST
 };
 
 enum Animal

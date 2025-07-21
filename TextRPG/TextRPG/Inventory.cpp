@@ -72,18 +72,21 @@ void PutInven(Player* player, const Item* item)
 	if (!item)
 		printf("넣을 아이템이 없습니다!\n");
 
+	else if (player->ItemList[INVENTORY_SIZE - 1].name != "")
+	{
+		printf("소지품이 가득찼습니다!!\n");
+		return;
+	}
 	else
 	{
 		for (int i = 0; i < INVENTORY_SIZE; i++)
-		{
+		{	
 			if (player->ItemList[i].name == "")
 			{
 				player->ItemList[i] = *item;
 				break;
 			}
 
-			if (i == INVENTORY_SIZE - 1)
-				printf("소지품이 가득찼습니다!\n");
 		}
 
 	}

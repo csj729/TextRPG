@@ -54,9 +54,15 @@ void SelectProduct(const Merchant* merchant, Player* player)
 
 			else
 			{
-				player->info.gold -= merchant->storeTable[selNum - 1].price;
-				PutInven(player, &merchant->storeTable[selNum - 1].item);
-				printf("%s 구입 완료!\n", merchant->storeTable[selNum - 1].item.name.c_str());
+ 				if (player->ItemList[INVENTORY_SIZE - 1].name != "")
+					printf("인벤토리가 가득찼습니다!\n");
+
+				else 
+				{
+					player->info.gold -= merchant->storeTable[selNum - 1].price;
+					PutInven(player, &merchant->storeTable[selNum - 1].item);
+					printf("%s 구입 완료!\n", merchant->storeTable[selNum - 1].item.name.c_str());
+				}
 			}
 		}
 	}

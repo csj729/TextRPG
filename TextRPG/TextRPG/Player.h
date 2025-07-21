@@ -13,6 +13,6 @@ void InitInven(Player* player);
 void SelectAction(Player* player, Monster* monster, Merchant* merchant);
 // 전투
 void Battle(Player* player, Monster* monster);
-// 상태 업데이트
+// 장비 장착 해제
 Item EquipItem(Player* player, const int item_idx);
 void UneqiupItem(Player* player);

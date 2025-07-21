@@ -1,4 +1,4 @@
-#include "Player.h"
+ï»¿#include "Player.h"
 #include "Inventory.h"
 #include "Monster.h"
 #include "Merchant.h"
@@ -8,8 +8,8 @@ void SelectAnimal(Player* player)
 	Animal sel_ani;
 	while (1)
 	{
-		printf("1. °­¾ÆÁö  2. °í¾çÀÌ  3. Åä³¢  4. °ÅºÏÀÌ  5. ÄõÄ«\n");
-		printf("³ª´Â ¹¹¾ß?? ");
+		printf("1. ê°•ì•„ì§€  2. ê³ ì–‘ì´  3. í† ë¼  4. ê±°ë¶ì´  5. ì¿¼ì¹´\n");
+		printf("ë‚˜ëŠ” ë­ì•¼?? ");
 
 		bool isCorrect = true;
 		scanf_s("%d", &sel_ani);
@@ -19,8 +19,13 @@ void SelectAnimal(Player* player)
 		{
 		case Dog:
 		{
-			printf("³­ °­¾ÆÁö±¸³ª.\n\n");
-			player->info.name = "°­¾ÆÁö";
+			printf("ë‚œ ê°•ì•„ì§€êµ¬ë‚˜.\n\n");
+			printf("      / \\__\n");
+			printf("    (    @\\___\n");
+			printf("    /         O\n");
+			printf("   /   (_____/\n");
+			printf("  /_____/ U\n\n");
+			player->info.name = "ê°•ì•„ì§€";
 			player->info.maxHp = 100;
 			player->info.hp = player->info.maxHp;
 			player->info.atk = 10;
@@ -32,8 +37,11 @@ void SelectAnimal(Player* player)
 		}
 		case Cat:
 		{
-			printf("³­ °í¾çÀÌ±¸³ª.\n\n");
-			player->info.name = "°í¾çÀÌ";
+			printf("ë‚œ ê³ ì–‘ì´êµ¬ë‚˜.\n\n");
+			printf(" /\\_/\\\n");
+			printf("( o.o )\n");
+			printf(" > ^ <\n");
+			player->info.name = "ê³ ì–‘ì´";
 			player->info.maxHp = 80;
 			player->info.hp = player->info.maxHp;
 			player->info.atk = 12;
@@ -45,8 +53,14 @@ void SelectAnimal(Player* player)
 		}
 		case Rabbit:
 		{
-			printf("³­ Åä³¢±¸³ª.\n\n");
-			player->info.name = "Åä³¢";
+			printf("ë‚œ í† ë¼êµ¬ë‚˜.\n\n");
+			printf("  (\\_/)\n");
+			printf("  ( -_-)\n");
+			printf(" / >     \n");
+			printf("/     \\\n");
+			printf("(       )\n");
+			printf(" ^^   ^^   \n\n");
+			player->info.name = "í† ë¼";
 			player->info.maxHp = 80;
 			player->info.hp = player->info.maxHp;
 			player->info.atk = 10;
@@ -58,8 +72,18 @@ void SelectAnimal(Player* player)
 		}
 		case Turtle:
 		{
-			printf("³­ °ÅºÏÀÌ±¸³ª.\n\n");
-			player->info.name = "°ÅºÏÀÌ";
+
+			printf("ë‚œ ê±°ë¶ì´êµ¬ë‚˜.\n\n");
+			printf("       _____     \n");
+			printf("     /       \\   \n");
+			printf(" ___|  o   o  |___\n");
+			printf("/     \\  âˆ‡  /     \\\n");
+			printf("\\_____/-----\\_____/\n");
+			printf("   _|         |_   \n");
+			printf("  / |         | \\  \n");
+			printf(" /_/|         |\\_\\ \n");
+			printf("   /_/     \\_\\     \n\n");
+			player->info.name = "ê±°ë¶ì´";
 			player->info.maxHp = 150;
 			player->info.hp = player->info.maxHp;
 			player->info.atk = 5;
@@ -71,8 +95,11 @@ void SelectAnimal(Player* player)
 		}
 		case Quokka:
 		{
-			printf("³­ ÄõÄ«±¸³ª.\n\n");
-			player->info.name = "ÄõÄ«";
+			printf("ë‚œ ì¿¼ì¹´êµ¬ë‚˜.\n\n");
+			printf("  (\\__/)\n");
+			printf("  ( oã……o)\n");
+			printf("  / ã€€ ã¥\n\n");
+			player->info.name = "ì¿¼ì¹´";
 			player->info.maxHp = 80;
 			player->info.hp = player->info.maxHp;
 			player->info.atk = 10;
@@ -84,7 +111,7 @@ void SelectAnimal(Player* player)
 		}
 		default:
 		{
-			printf("³»°¡ ´©±ºÁö ¸ğ¸£°Ú´Â°É..\n\n");
+			printf("ë‚´ê°€ ëˆ„êµ°ì§€ ëª¨ë¥´ê² ëŠ”ê±¸..\n\n");
 			isCorrect = false;
 			break;
 		}
@@ -97,16 +124,16 @@ void SelectAnimal(Player* player)
 
 void PrintStatus(const Player* player)
 {
-	std::cout << "=== ÇÃ·¹ÀÌ¾î »óÅÂ ===\n";
-	std::cout << "ÀÌ¸§: " << player->info.name << "\n";
-	std::cout << "·¹º§: " << player->level << "\n";
+	std::cout << "=== í”Œë ˆì´ì–´ ìƒíƒœ ===\n";
+	std::cout << "ì´ë¦„: " << player->info.name << "\n";
+	std::cout << "ë ˆë²¨: " << player->level << "\n";
 	std::cout << "HP: " << player->info.hp << "/" << player->info.maxHp << "\n";
-	std::cout << "°ø°İ·Â: " << player->info.atk << "\n";
+	std::cout << "ê³µê²©ë ¥: " << player->info.atk << "\n";
 	std::cout << "MP: " << player->mp << "/" << player->maxMp << "\n";
-	std::cout << "Ä¡¸íÅ¸ È®·ü: " << player->criRate << "\n";
-	std::cout << "Ä¡¸íÅ¸ ¹èÀ²: " << player->criMulti << "\n";
-	std::cout << "ÇöÀç °æÇèÄ¡: " << player->info.exp << "/" << player->maxExp << "\n";
-	std::cout << "ÇöÀç ¼ÒÁö °ñµå: " << player->info.gold << "Gold" << "\n";
+	std::cout << "ì¹˜ëª…íƒ€ í™•ë¥ : " << player->criRate << "\n";
+	std::cout << "ì¹˜ëª…íƒ€ ë°°ìœ¨: " << player->criMulti << "\n";
+	std::cout << "í˜„ì¬ ê²½í—˜ì¹˜: " << player->info.exp << "/" << player->maxExp << "\n";
+	std::cout << "í˜„ì¬ ì†Œì§€ ê³¨ë“œ: " << player->info.gold << "Gold" << "\n";
 	PrintEquip(player);
 	printf("\n");
 	PrintInven(player);
@@ -140,8 +167,8 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 {
 	while (1)
 	{
-		printf("¹«½¼ Çàµ¿À» ÇÒ±î??\n");
-		printf("1. Å¾À» ¿À¸¥´Ù    2. »óÅÂ¸¦ È®ÀÎÇÑ´Ù    3. Àåºñ¸¦ ÀåÂøÇÑ´Ù    4. ´Ù½Ã Àá¿¡ µç´Ù\n");
+		printf("ë¬´ìŠ¨ í–‰ë™ì„ í• ê¹Œ??\n");
+		printf("1. íƒ‘ì„ ì˜¤ë¥¸ë‹¤    2. ìƒíƒœë¥¼ í™•ì¸í•œë‹¤    3. ì¥ë¹„ë¥¼ ì¥ì°©í•œë‹¤    4. ë‹¤ì‹œ ì ì— ë“ ë‹¤\n");
 
 		int select;
 		bool isCorrect = true;
@@ -153,7 +180,7 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 		case 1:
 		{
 			floorNum++;
-			printf("%dÃş¿¡ µµÂøÇß´Ù.\n", floorNum);
+			printf("%dì¸µì— ë„ì°©í–ˆë‹¤.\n", floorNum);
 
 			int random = rand() % 100;
 
@@ -162,19 +189,19 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 				int arr_size = sizeof(monsterNames) / sizeof(std::string);
 				std::string monsterName = PickRandomName(monsterNames, arr_size);
 				*monster = CreateMonster(monsterName);
-				printf("¸ó½ºÅÍ¿Í ¸¶ÁÖÃÆ´Ù! ÀüÅõ ½ÃÀÛ!\n\n");
+				printf("ëª¬ìŠ¤í„°ì™€ ë§ˆì£¼ì³¤ë‹¤! ì „íˆ¬ ì‹œì‘!\n\n");
 				Battle(player, monster);
 			}
 			else if (random < 95)
 			{
-				printf("¼ö»óÇÑ »óÀÎÀ» ¸¸³µ´Ù.\n\n");
+				printf("ìˆ˜ìƒí•œ ìƒì¸ì„ ë§Œë‚¬ë‹¤.\n\n");
 				InitMerchant(merchant, storeTable);
 				SelectProduct(merchant, player);
 			}
 			else
 			{
-				printf("º¸¹°»óÀÚ¸¦ ¹ß°ßÇß´Ù!\n\n");
-				// TODO: º¸»ó ÇÔ¼ö È£Ãâ
+				printf("ë³´ë¬¼ìƒìë¥¼ ë°œê²¬í–ˆë‹¤!\n\n");
+				// TODO: ë³´ìƒ í•¨ìˆ˜ í˜¸ì¶œ
 			}
 			break;
 		}
@@ -190,10 +217,10 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 			while (1)
 			{
 				system("cls");
-				printf("Àåºñ¸¦ ÀåÂøÇÏÀÚ! ¹» ÀåÂøÇÒ±î?\n");
+				printf("ì¥ë¹„ë¥¼ ì¥ì°©í•˜ì! ë­˜ ì¥ì°©í• ê¹Œ?\n");
 				PrintInven(player);
 
-				printf("ÀÎº¥Åä¸®ÀÇ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä (1~%d±îÁö, ³ª°¡±â´Â 0) : ", INVENTORY_SIZE);
+				printf("ì¸ë²¤í† ë¦¬ì˜ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš” (1~%dê¹Œì§€, ë‚˜ê°€ê¸°ëŠ” 0) : ", INVENTORY_SIZE);
 				int sel_idx;
 				scanf_s("%d", &sel_idx);
 
@@ -204,13 +231,13 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 				}
 
 				else if (sel_idx < 0 || sel_idx > 10)
-					printf("Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä!\n");
+					printf("ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”!\n");
 
 				else if ( player->ItemList[sel_idx - 1].itemType > ITEM_EQUIPLEG)
-					printf("Àåºñ ¾ÆÀÌÅÛÀÌ ¾Æ´Õ´Ï´Ù. ´Ù½Ã ¼±ÅÃÇØÁÖ¼¼¿ä!\n");
+					printf("ì¥ë¹„ ì•„ì´í…œì´ ì•„ë‹™ë‹ˆë‹¤. ë‹¤ì‹œ ì„ íƒí•´ì£¼ì„¸ìš”!\n");
 
 				else
-					printf("%s¸¦ ÀåÂøÇß½À´Ï´Ù!\n", EquipItem(player, sel_idx).name.c_str());
+					printf("%së¥¼ ì¥ì°©í–ˆìŠµë‹ˆë‹¤!\n", EquipItem(player, sel_idx).name.c_str());
 
 				system("pause");
 			}
@@ -218,13 +245,13 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 		}
 		case 4:
 		{
-			printf("´Ù½Ã Àá¿¡ ºüÁ®µç´Ù...\n");
+			printf("ë‹¤ì‹œ ì ì— ë¹ ì ¸ë“ ë‹¤...\n");
 			printf("Game Over!\n");
 			exit(0);
 		}
 		default:
 		{
-			printf("ÀÌÇØÇÒ ¼ö ¾ø´Â Çàµ¿ÀÌ¾ß.\n\n");
+			printf("ì´í•´í•  ìˆ˜ ì—†ëŠ” í–‰ë™ì´ì•¼.\n\n");
 			isCorrect = false;
 			break;
 		}
@@ -246,8 +273,8 @@ void Battle(Player* player, Monster* monster)
 
 		int act_sel, realDmg_PtoM = 0, realDmg_MtoP = 0;
 		bool isCorrect = true;
-		printf("\n1. °ø°İ  2. ½ºÅ³  3. ¾ÆÀÌÅÛ\n");
-		printf("Çàµ¿ ¼±ÅÃ : ");
+		printf("\n1. ê³µê²©  2. ìŠ¤í‚¬  3. ì•„ì´í…œ\n");
+		printf("í–‰ë™ ì„ íƒ : ");
 		scanf_s("%d", &act_sel);
 
 		system("cls");
@@ -255,66 +282,66 @@ void Battle(Player* player, Monster* monster)
 		{
 		case 1:
 		{
-			// ÃÖÁ¾µ¥¹ÌÁö °è»ê ·ÎÁ÷ ½ÇÇà ÈÄ ¸ó½ºÅÍ hp - ÃÖÁ¾µ¥¹ÌÁö
-			printf("°ø°İ!!\n");
+			// ìµœì¢…ë°ë¯¸ì§€ ê³„ì‚° ë¡œì§ ì‹¤í–‰ í›„ ëª¬ìŠ¤í„° hp - ìµœì¢…ë°ë¯¸ì§€
+			printf("ê³µê²©!!\n");
 			realDmg_PtoM = player->info.atk;
 			monster->info.hp -= realDmg_PtoM;
 			break;
 		}
 		case 2:
 		{
-			printf("½ºÅ³ »ç¿ë!\n");
-			// º¸À¯ ½ºÅ³ Ãâ·Â ÈÄ ¼±ÅÃ ±¸Çö
+			printf("ìŠ¤í‚¬ ì‚¬ìš©!\n");
+			// ë³´ìœ  ìŠ¤í‚¬ ì¶œë ¥ í›„ ì„ íƒ êµ¬í˜„
 			break;
 		}
 		case 3:
 		{
-			printf("¾ÆÀÌÅÛ »ç¿ë!\n");
-			// º¸À¯ ¾ÆÀÌÅÛ Ãâ·Â ÈÄ ¼±ÅÃ ±¸Çö
+			printf("ì•„ì´í…œ ì‚¬ìš©!\n");
+			// ë³´ìœ  ì•„ì´í…œ ì¶œë ¥ í›„ ì„ íƒ êµ¬í˜„
 			break;
 		}
 		default:
 		{
-			printf("ÀÌ»óÇÑ Çàµ¿Àº ¾ÈµÅ.\n");
+			printf("ì´ìƒí•œ í–‰ë™ì€ ì•ˆë¼.\n");
 			isCorrect = false;
 			break;
 		}
 		}
 
-		printf_s("%s¿¡°Ô %d µ¥¹ÌÁö¸¦ ÁÖ¾ú½À´Ï´Ù!!\n", monster->info.name.c_str(), realDmg_PtoM);
-		// ¸ó½ºÅÍ »ç¸Á ½Ã Àü¸®Ç° È¹µæ°ú ÀüÅõ Á¾·á
+		printf_s("%sì—ê²Œ %d ë°ë¯¸ì§€ë¥¼ ì£¼ì—ˆìŠµë‹ˆë‹¤!!\n", monster->info.name.c_str(), realDmg_PtoM);
+		// ëª¬ìŠ¤í„° ì‚¬ë§ ì‹œ ì „ë¦¬í’ˆ íšë“ê³¼ ì „íˆ¬ ì¢…ë£Œ
 		if (monster->info.hp <= 0)
 		{
-			printf("%s¸¦ Ã³Ä¡Çß´Ù!!\n", monster->info.name.c_str());
-			printf("%dÀÇ °æÇèÄ¡¸¦ ¾ò¾ú´Ù!!\n", monster->info.exp);
-			printf("%dÀÇ Gold¸¦ ¾ò¾ú´Ù!!\n", monster->info.gold);
+			printf("%së¥¼ ì²˜ì¹˜í–ˆë‹¤!!\n", monster->info.name.c_str());
+			printf("%dì˜ ê²½í—˜ì¹˜ë¥¼ ì–»ì—ˆë‹¤!!\n", monster->info.exp);
+			printf("%dì˜ Goldë¥¼ ì–»ì—ˆë‹¤!!\n", monster->info.gold);
 
 			UpdateExpAndLevel(player, monster->info.exp);
 			player->info.gold += monster->info.gold;
 			const Item* dropItem = RollDrop(monster->dropTable);
 			if (!dropItem)
-				printf("¾ÆÀÌÅÛÀÌ µå¶øµÇÁö ¾Ê¾Ò½À´Ï´Ù..\n\n");
+				printf("ì•„ì´í…œì´ ë“œëë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤..\n\n");
 			else
-				printf("%s¸¦ È¹µæÇß½À´Ï´Ù!!\n\n", dropItem->name.c_str());
+				printf("%së¥¼ íšë“í–ˆìŠµë‹ˆë‹¤!!\n\n", dropItem->name.c_str());
 
 			PutInven(player, dropItem);
-			// Àü¸®Ç° È¹µæ ¹®±¸ Ãâ·Â ÈÄ Àü¸®Ç° È¹µæ ±¸Çö
+			// ì „ë¦¬í’ˆ íšë“ ë¬¸êµ¬ ì¶œë ¥ í›„ ì „ë¦¬í’ˆ íšë“ êµ¬í˜„
 			break;
 		}
 
-		// ¿Ã¹Ù¸¥ ÀÔ·Â ½Ã ÀÔ·Â¿¡ µû¸¥ °á°ú¿Í ÃÖÁ¾ µ¥¹ÌÁö ÇÕ»êÇÏ¿© ÁØ ÇÇÇØ¿Í ¹ŞÀº ÇÇÇØ Ãâ·Â.
+		// ì˜¬ë°”ë¥¸ ì…ë ¥ ì‹œ ì…ë ¥ì— ë”°ë¥¸ ê²°ê³¼ì™€ ìµœì¢… ë°ë¯¸ì§€ í•©ì‚°í•˜ì—¬ ì¤€ í”¼í•´ì™€ ë°›ì€ í”¼í•´ ì¶œë ¥.
 		if (isCorrect)
 		{
-			// ¸ó½ºÅÍÀÇ ÃÖÁ¾ µ¥¹ÌÁö °è»ê ÈÄ ÇÃ·¹ÀÌ¾î hp - ÃÖÁ¾µ¥¹ÌÁö
+			// ëª¬ìŠ¤í„°ì˜ ìµœì¢… ë°ë¯¸ì§€ ê³„ì‚° í›„ í”Œë ˆì´ì–´ hp - ìµœì¢…ë°ë¯¸ì§€
 			realDmg_MtoP = monster->info.atk;
 			player->info.hp -= realDmg_MtoP;
-			printf_s("%s´Â %d ÇÇÇØ¸¦ ÀÔ¾ú½À´Ï´Ù!!\n\n", player->info.name.c_str(), realDmg_MtoP);
+			printf_s("%sëŠ” %d í”¼í•´ë¥¼ ì…ì—ˆìŠµë‹ˆë‹¤!!\n\n", player->info.name.c_str(), realDmg_MtoP);
 		}
 
-		// ÇÃ·¹ÀÌ¾î »ç¸Á ½Ã °ÔÀÓ ¿À¹ö
+		// í”Œë ˆì´ì–´ ì‚¬ë§ ì‹œ ê²Œì„ ì˜¤ë²„
 		if (player->info.hp <= 0)
 		{
-			printf("%s´Â ¾²·¯Á³´Ù...\n", player->info.name.c_str());
+			printf("%sëŠ” ì“°ëŸ¬ì¡Œë‹¤...\n", player->info.name.c_str());
 			exit(0);
 		}
 
@@ -329,10 +356,10 @@ Item EquipItem(Player* player, const int item_idx)
 	Item NewItem = player->ItemList[item_idx - 1];
 	if (NewItem.itemType == ITEM_EQUIPWEAPON)
 	{
-		// µ¿ÀÏ ºÎÀ§¿¡ ÀÌ¹Ì ÀåÂøµÈ Àåºñ Á¸Àç
+		// ë™ì¼ ë¶€ìœ„ì— ì´ë¯¸ ì¥ì°©ëœ ì¥ë¹„ ì¡´ì¬
 		if (player->EquipList[ITEM_EQUIPWEAPON].name != "")
 		{
-			// ±âÁ¸¿¡ ÀåÂøµÈ Àåºñ ½ºÅÈ¸¸Å­ °¨¼Ò
+			// ê¸°ì¡´ì— ì¥ì°©ëœ ì¥ë¹„ ìŠ¤íƒ¯ë§Œí¼ ê°ì†Œ
 			player->info.maxHp -= player->EquipList[ITEM_EQUIPWEAPON].maxHp;
 			player->info.hp -= player->EquipList[ITEM_EQUIPWEAPON].hp;
 			player->maxMp -= player->EquipList[ITEM_EQUIPWEAPON].maxMp;
@@ -341,7 +368,7 @@ Item EquipItem(Player* player, const int item_idx)
 			player->criRate -= player->EquipList[ITEM_EQUIPWEAPON].criRate;
 			player->criMulti -= player->EquipList[ITEM_EQUIPWEAPON].criMulti;
 			
-			// »õ·Î¿î Àåºñ ½ºÅÈ¸¸Å­ Áõ°¡ ÈÄ ±âÁ¸ Àåºñ ÀÎº¥Åä¸®¿¡ ´Ù½Ã ÀúÀå
+			// ìƒˆë¡œìš´ ì¥ë¹„ ìŠ¤íƒ¯ë§Œí¼ ì¦ê°€ í›„ ê¸°ì¡´ ì¥ë¹„ ì¸ë²¤í† ë¦¬ì— ë‹¤ì‹œ ì €ì¥
 			player->info.maxHp += NewItem.maxHp;
 			player->info.hp += NewItem.hp;
 			player->maxMp += NewItem.maxMp;
@@ -494,7 +521,7 @@ Item EquipItem(Player* player, const int item_idx)
 	}
 	else
 	{
-		printf("Àåºñ ÀåÂø ¿À·ù¿À·ù¿À·ù¿À·ù!!!! NewItem ÇÔ¼ö È®ÀÎ\n");
+		printf("ì¥ë¹„ ì¥ì°© ì˜¤ë¥˜ì˜¤ë¥˜ì˜¤ë¥˜ì˜¤ë¥˜!!!! NewItem í•¨ìˆ˜ í™•ì¸\n");
 		Item dummy = { 0 };
 		return dummy;
 	}

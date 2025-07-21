@@ -18,7 +18,6 @@ int main()
 	SelectAnimal(&player);
 	InitInven(&player);
 	InitStoreTable(storeTable);
-	// PrintStatus(&player);
 
 	while (1)
 	{
