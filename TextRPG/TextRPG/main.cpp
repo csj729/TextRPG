@@ -3,6 +3,7 @@
 #include "Monster.h"
 #include "Merchant.h"
 
+
 int floorNum = 0;
 StoreTable storeTable[STORETABLE_MAXNUM];
 
@@ -12,7 +13,6 @@ int main()
 	Player player;
 	Monster monster;
 	Merchant merchant;
-
 
 	printf("잠에서 깬다..\n");
 	SelectAnimal(&player);

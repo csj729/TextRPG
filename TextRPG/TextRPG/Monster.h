@@ -9,7 +9,7 @@ void PrintStatus(const Monster* monster);
 
 // 몬스터 생성
 Monster CreateMonster(const std::string name);
-
 std::string PickRandomName(const std::string monsterName[], int size);
 
+// 드랍아이템 랜덤으로 픽
 const Item* RollDrop(const DropTable* table);

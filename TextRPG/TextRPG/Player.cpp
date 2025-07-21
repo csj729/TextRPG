@@ -168,7 +168,7 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 	while (1)
 	{
 		printf("무슨 행동을 할까??\n");
-		printf("1. 탑을 오른다    2. 상태를 확인한다    3. 장비를 장착한다    4. 다시 잠에 든다\n");
+		printf("1. 탑을 오른다    2. 상태를 확인한다    3. 장비를 장착한다   4. 장비를 해제한다    5. 다시 잠에 든다\n");
 
 		int select;
 		bool isCorrect = true;
@@ -244,6 +244,13 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 			break;
 		}
 		case 4:
+		{
+			PrintEquip(player);
+			printf("어느 장비를 해제하겠습니까?\n");
+			UneqiupItem(player);
+			break;
+		}
+		case 5:
 		{
 			printf("다시 잠에 빠져든다...\n");
 			printf("Game Over!\n");
@@ -529,5 +536,88 @@ Item EquipItem(Player* player, const int item_idx)
 
 void UneqiupItem(Player* player)
 {
+	char selEquip[20];
+	scanf_s("%s", selEquip, (unsigned)sizeof(selEquip));
 
+	if (strcmp(selEquip, "무기") == 0)
+	{
+		player->info.maxHp -= player->EquipList[ITEM_EQUIPWEAPON].maxHp;
+		player->info.hp -= player->EquipList[ITEM_EQUIPWEAPON].hp;
+		player->maxMp -= player->EquipList[ITEM_EQUIPWEAPON].maxMp;
+		player->mp -= player->EquipList[ITEM_EQUIPWEAPON].mp;
+		player->info.atk -= player->EquipList[ITEM_EQUIPWEAPON].atk;
+		player->criRate -= player->EquipList[ITEM_EQUIPWEAPON].criRate;
+		player->criMulti -= player->EquipList[ITEM_EQUIPWEAPON].criMulti;
+
+		PutInven(player, &player->EquipList[ITEM_EQUIPWEAPON]);
+		player->EquipList[ITEM_EQUIPWEAPON] = MakeEmptyItem();
+		printf("무기를 해제했습니다!\n");
+	}
+	
+	else if (strcmp(selEquip, "몸통") == 0)
+	{
+		player->info.maxHp -= player->EquipList[ITEM_EQUIPBODY].maxHp;
+		player->info.hp -= player->EquipList[ITEM_EQUIPBODY].hp;
+		player->maxMp -= player->EquipList[ITEM_EQUIPBODY].maxMp;
+		player->mp -= player->EquipList[ITEM_EQUIPBODY].mp;
+		player->info.atk -= player->EquipList[ITEM_EQUIPBODY].atk;
+		player->criRate -= player->EquipList[ITEM_EQUIPBODY].criRate;
+		player->criMulti -= player->EquipList[ITEM_EQUIPBODY].criMulti;
+
+		PutInven(player, &player->EquipList[ITEM_EQUIPBODY]);
+		player->EquipList[ITEM_EQUIPBODY] = MakeEmptyItem();
+		printf("몸통을 해제했습니다!\n");
+	}
+
+	else if (strcmp(selEquip, "장갑") == 0)
+	{
+		player->info.maxHp -= player->EquipList[ITEM_EQUIPGLOVES].maxHp;
+		player->info.hp -= player->EquipList[ITEM_EQUIPGLOVES].hp;
+		player->maxMp -= player->EquipList[ITEM_EQUIPGLOVES].maxMp;
+		player->mp -= player->EquipList[ITEM_EQUIPGLOVES].mp;
+		player->info.atk -= player->EquipList[ITEM_EQUIPGLOVES].atk;
+		player->criRate -= player->EquipList[ITEM_EQUIPGLOVES].criRate;
+		player->criMulti -= player->EquipList[ITEM_EQUIPGLOVES].criMulti;
+
+		PutInven(player, &player->EquipList[ITEM_EQUIPGLOVES]);
+		player->EquipList[ITEM_EQUIPGLOVES] = MakeEmptyItem();
+		printf("장갑을 해제했습니다!\n");
+	}
+
+	else if (strcmp(selEquip, "다리") == 0)
+	{
+		player->info.maxHp -= player->EquipList[ITEM_EQUIPLEG].maxHp;
+		player->info.hp -= player->EquipList[ITEM_EQUIPLEG].hp;
+		player->maxMp -= player->EquipList[ITEM_EQUIPLEG].maxMp;
+		player->mp -= player->EquipList[ITEM_EQUIPLEG].mp;
+		player->info.atk -= player->EquipList[ITEM_EQUIPLEG].atk;
+		player->criRate -= player->EquipList[ITEM_EQUIPLEG].criRate;
+		player->criMulti -= player->EquipList[ITEM_EQUIPLEG].criMulti;
+
+		PutInven(player, &player->EquipList[ITEM_EQUIPLEG]);
+		player->EquipList[ITEM_EQUIPLEG] = MakeEmptyItem();
+		printf("다리를 해제했습니다!\n");
+	}
+
+	else if (strcmp(selEquip, "머리") == 0)
+	{
+		player->info.maxHp -= player->EquipList[ITEM_EQUIPHEAD].maxHp;
+		player->info.hp -= player->EquipList[ITEM_EQUIPHEAD].hp;
+		player->maxMp -= player->EquipList[ITEM_EQUIPHEAD].maxMp;
+		player->mp -= player->EquipList[ITEM_EQUIPHEAD].mp;
+		player->info.atk -= player->EquipList[ITEM_EQUIPHEAD].atk;
+		player->criRate -= player->EquipList[ITEM_EQUIPHEAD].criRate;
+		player->criMulti -= player->EquipList[ITEM_EQUIPHEAD].criMulti;
+
+		PutInven(player, &player->EquipList[ITEM_EQUIPHEAD]);
+		player->EquipList[ITEM_EQUIPHEAD] = MakeEmptyItem();
+		printf("머리를 해제했습니다!\n");
+	}
+
+	else
+	{
+		printf("잘못된 입력입니다!\n");
+	}
+	Sleep(1000);
+	system("cls");
 }
