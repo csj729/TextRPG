@@ -39,20 +39,31 @@ C언어로 만든 간단한 텍스트 기반 로그라이크 게임입니다.
 - `CompactItemList`: 빈 슬롯 제거 및 정렬  
 - `IsValidItem`: 아이템 유효성 판단  
 - `PrintInven`: 현재 보유 아이템 출력
+- `PrintEquip` : 현재 장착된 장비 출력
+- `MakeEmptyItem` : Item을 초기화
 
 ### 3. 전투 및 드롭 시스템 (`Monster.cpp`)
-- 몬스터마다 고유 드롭 테이블
-- 랜덤 확률로 아이템 및 골드 드롭
-- 경험치 계산 후 레벨업 처리
+- `PrintStatus` : 몬스터의 스탯창 출력
+- `CreateMonster` : 몬스터 이름을 인자로 받아 해당 이름의 몬스터 생성
+- `PickRandomName` : 몬스터 이름 배열에서 랜덤한 하나의 값 추출
+- `RollDrop` : 몬스터 드랍 테이블의 확률에 따라 랜덤한 아이템을 드랍
 
 ### 4. 상점 구현 (`Merchant.cpp`)
 - `StoreTable` 기반 상점 아이템 목록
-- `BuyItem`: 구매 시 골드 차감, 인벤토리 추가
+- `InitStoreTable` : StoreTable에 상점 아이템 목록을 하드코딩
+- `InitMerchant`: StoreTable에 있는 아이템 목록을 랜덤하게 몇 개를 뽑아 상인의 아이템 테이블에 저장
+- `SelectProduct` : 상인 아이템 목록에서 아이템을 골라 구매
 
 ### 5. 플레이어 성장 (`Player.cpp`)
-- 경험치 기준 도달 시 `LevelUp()`
-- 레벨별 능력치 및 마나 증가 적용
-
+- `SelectAnimal` : 플레이할 동물 선택
+- `PrintStatus` : 플레이어 스탯창 출력
+- `UpdateExpAndLevel` : 경험치 획득 시 경험치 업데이트 및 레벨업 관리
+- `InitInven` : 인벤토리 초기화
+- `SelectAction` : 어떤 행동을 할 지 선택
+- `Battle` : 몬스터와의 전투 관리
+- `EquipItem` : 장비 장착
+- `UnequipItem` : 장비 해제
+- `SellItem` : 아이템 판매
 ---
 
 ## 💻 실행 환경
