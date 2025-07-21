@@ -54,7 +54,7 @@ C언어로 만든 간단한 텍스트 기반 로그라이크 게임입니다.
 - `InitMerchant`: StoreTable에 있는 아이템 목록을 랜덤하게 몇 개를 뽑아 상인의 아이템 테이블에 저장
 - `SelectProduct` : 상인 아이템 목록에서 아이템을 골라 구매
 
-### 5. 플레이어 성장 (`Player.cpp`)
+### 5. 플레이어 (`Player.cpp`)
 - `SelectAnimal` : 플레이할 동물 선택
 - `PrintStatus` : 플레이어 스탯창 출력
 - `UpdateExpAndLevel` : 경험치 획득 시 경험치 업데이트 및 레벨업 관리
@@ -64,6 +64,15 @@ C언어로 만든 간단한 텍스트 기반 로그라이크 게임입니다.
 - `EquipItem` : 장비 장착
 - `UnequipItem` : 장비 해제
 - `SellItem` : 아이템 판매
+- `SkillNameInput` : 스킬명을 정해진 시간 내에 정확히 입력해야 발동 // 구현 중, 입력 버퍼에 남은 값이 자꾸 다음 입력에 영향을 주고 있음
+- `SkillRandomInput` : 주어진 랜덤한 버튼을 시간 내에 입력하면 발동 // 구현 중
+- `SkillArrowCommandInput` : 주어진 시간 내에 커맨드 입력하면 발동 // 구현 중
+- `PrintSkill` : 스킬 목록 출력
+- `UseSkill` : 선택한 스킬 사용
+
+### 6. 저장/불러오기 (`FileSave.cpp`)
+- `CreateData` : 플레이어 데이터 저장
+- `LoadData` : 저장된 플레이어 데이터 로드
 ---
 
 ## 💻 실행 환경
