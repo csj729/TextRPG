@@ -22,4 +22,4 @@ C언어로 만든 간단한 텍스트 기반 로그라이크 게임입니다.
 
 ## 🙋‍♂️ 개발자
 - 천성준 (성준천)
-- [GitHub Profile](https://github.com/yourID)
+- [GitHub Profile](https://github.com/csj729)
