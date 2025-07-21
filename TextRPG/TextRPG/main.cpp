@@ -3,7 +3,6 @@
 #include "Monster.h"
 #include "Merchant.h"
 
-
 int floorNum = 0;
 StoreTable storeTable[STORETABLE_MAXNUM];
 

@@ -6,7 +6,6 @@
 #include <vector>
 #include <windows.h>
 
-
 #define EQUIPITEM_NUM 5
 #define CONSUMEITEM_NUM 3
 #define INVENTORY_SIZE 10

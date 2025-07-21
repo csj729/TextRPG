@@ -92,3 +92,29 @@ void PutInven(Player* player, const Item* item)
 	}
 	
 }
+
+int IsValidItem(Item* item) {
+	return item->name != "";
+}
+
+// 빈 인덱스를 제거하고 앞으로 정렬
+void CompactItemList(Player* player) {
+	int insertPos = 0;
+
+	for (int i = 0; i < INVENTORY_SIZE; i++) {
+		if (IsValidItem(&player->ItemList[i])) {
+			if (i != insertPos) {
+				// 유효한 아이템을 앞으로 이동
+				player->ItemList[insertPos] = player->ItemList[i];
+				// 원래 위치 초기화
+				memset(&player->ItemList[i], 0, sizeof(Item));
+			}
+			insertPos++;
+		}
+	}
+
+	// 나머지 뒷부분 초기화
+	for (int i = insertPos; i < INVENTORY_SIZE; i++) {
+		memset(&player->ItemList[i], 0, sizeof(Item));
+	}
+}
