@@ -123,14 +123,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileSave.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="LuckyBox.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Merchant.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FileSave.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="LuckyBox.h" />
     <ClInclude Include="Merchant.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Player.h" />

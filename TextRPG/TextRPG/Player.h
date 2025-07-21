@@ -1,6 +1,10 @@
 #pragma once
 #include "Struct.h"
+#include "Inventory.h"
 #include "Monster.h"
+#include "Merchant.h"
+#include "LuckyBox.h"
+#include "FileSave.h"
 
 // 동물 선택
 void SelectAnimal(Player* player);
@@ -16,3 +20,19 @@ void Battle(Player* player, Monster* monster);
 // 장비 장착 해제
 Item EquipItem(Player* player, const int item_idx);
 void UneqiupItem(Player* player);
+// 아이템 판매
+void SellItem(Player* player);
+
+// 입력버퍼 비우기
+void flushInputBuffer();
+// 제한된 시간에 정확한 스킬명을 입력해야 발동
+int SkillNameInput(const char* skillName, int timeLimitSeconds);
+// 아스키 코드에 따라 화살표 출력
+const char* ArrowName(int code);
+// 제한된 시간에 정확한 커맨드를 입력해야 발동
+int SkillArrowCommandInput(const int* expectedCommand, int length, int timeLimitMs);
+// 제한된 시간에 랜덤하게 주어지는 키 입력
+int SkillRandomInput(int pressCount, int timeLimitSeconds);
+
+void PrintSkill(Player* player);
+void UseSkill(Player* player, int* realDmg_PtoM, const int selNum);

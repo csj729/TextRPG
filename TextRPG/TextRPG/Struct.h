@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <windows.h>
+#include <conio.h>
 
 #define EQUIPITEM_NUM 5
 #define CONSUMEITEM_NUM 3
@@ -13,6 +14,7 @@
 #define STORETABLE_MAXNUM 5
 #define BASE_EXP 30
 #define BASIC_GOLD 500
+#define SKILL_SLOTNUM 3
 extern int floorNum;
 
 // 0~4까지 장착가능 장비, 장비 종류와 인덱스는 서로 일대일 대응으로 고정 ex) 0번 = 무기, 1번 = 머리
@@ -36,6 +38,15 @@ enum Animal
 	Quokka
 };
 
+enum Buff
+{
+	ATK,
+	MAXHP,
+	MAXMP,
+	CRIRATE,
+	CRIMULTI
+};
+
 struct BasicInfo
 {
 	std::string name;
@@ -54,11 +65,18 @@ typedef struct Inven
 	int maxMp;
 	int mp;
 	int atk;
+	int gold;
 	float criRate;
 	float criMulti;
 	ItemType itemType;
 
 } Item;
+
+struct Skill
+{
+	std::string name;
+	int atk;
+};
 
 struct DropTable
 {
@@ -88,6 +106,7 @@ struct Player
 	BasicInfo info;
 	Item EquipList[EQUIPITEM_NUM];
 	Item ItemList[INVENTORY_SIZE];
+	Skill SkillList[SKILL_SLOTNUM];
 	int level = 1;
 	int maxMp;
 	int mp;
@@ -101,3 +120,4 @@ struct Merchant
 	int productNum = 3;
 	StoreTable storeTable[STORETABLE_MAXNUM];
 };
+

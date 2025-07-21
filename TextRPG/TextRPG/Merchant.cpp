@@ -3,11 +3,11 @@
 void InitStoreTable(StoreTable* storeTable)
 {
 	// 상점 품목 테이블
-	storeTable[0] = { { "HP포션", 0, 50, 0, 0, 0, 0.0f, 0.0f, ITEM_CONSUME }, 50 };
-	storeTable[1] = { { "MP포션", 0, 0, 0, 50, 0, 0.0f, 0.0f, ITEM_CONSUME }, 50 };
-	storeTable[2] = { { "AD포션", 0, 0, 0, 0, 20, 0.0f, 0.0f, ITEM_CONSUME }, 50 };
-	storeTable[3] = { { "치명타 확률 포션", 0, 0, 0, 0, 0, 0.2f, 0.0f, ITEM_CONSUME }, 50 };
-	storeTable[4] = { { "치명타 배율 포션", 0, 0, 0, 0, 0, 0.0f, 0.2f, ITEM_CONSUME }, 50 };
+	storeTable[0] = { { "HP포션", 0, 50, 0, 0, 0, 50, 0.0f, 0.0f, ITEM_CONSUME }, 50 };
+	storeTable[1] = { { "MP포션", 0, 0, 0, 50, 0, 50, 0.0f, 0.0f, ITEM_CONSUME }, 50 };
+	storeTable[2] = { { "AD포션", 0, 0, 0, 0, 20, 50, 0.0f, 0.0f, ITEM_CONSUME }, 50 };
+	storeTable[3] = { { "치명타 확률 포션", 0, 0, 0, 0, 0, 50, 0.2f, 0.0f, ITEM_CONSUME }, 50 };
+	storeTable[4] = { { "치명타 배율 포션", 0, 0, 0, 0, 0, 50, 0.0f, 0.2f, ITEM_CONSUME }, 50 };
 
 }
 
@@ -36,7 +36,7 @@ void SelectProduct(const Merchant* merchant, Player* player)
 	while (1)
 	{
 		int selNum;
-		printf("나의 선택은? (상품 번호 입력, 0 입력 시 나가기) ");
+		printf("나의 선택은? (상품 번호 입력, 0 입력 시 뒤로가기) ");
 		scanf_s("%d", &selNum);
 
 		if (selNum == 0)

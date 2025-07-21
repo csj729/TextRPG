@@ -1,7 +1,7 @@
 #include "Inventory.h"
 
 Inven MakeEmptyItem() {
-	return { "", 0, 0, 0, 0, 0, 0.0f, 0.0f , ITEM_NONE};
+	return { "", 0, 0, 0, 0, 0, 0, 0.0f, 0.0f , ITEM_NONE};
 }
 
 void PrintInven(const Player* player)
