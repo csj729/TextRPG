@@ -61,6 +61,7 @@ C언어로 만든 간단한 텍스트 기반 로그라이크 게임입니다.
 - `UpdateExpAndLevel` : 경험치 획득 시 경험치 업데이트 및 레벨업 관리
 - `InitInven` : 인벤토리 초기화
 - `SelectAction` : 어떤 행동을 할 지 선택
+- `UpdatePlayerInfo` : 플레이어 정보 업데이트
 - `Battle` : 몬스터와의 전투 관리
 - `EquipItem` : 장비 장착
 - `UnequipItem` : 장비 해제
