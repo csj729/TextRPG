@@ -21,9 +21,11 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant);
 void Battle(Player* player, Monster* monster);
 // 장비 장착 해제
 Item EquipItem(Player* player, const int item_idx);
-void UneqiupItem(Player* player);
+bool UneqiupItem(Player* player);
 // 아이템 판매
 void SellItem(Player* player);
+
+void UpdatePlayerInfo(Player* player, const Item item, const char sign);
 
 // 입력버퍼 비우기
 void flushInputBuffer();

@@ -176,6 +176,33 @@ void UpdateExpAndLevel(Player* player, const int exp)
 		player->info.exp += exp;
 	}
 }
+void UpdatePlayerInfo(Player* player, const Item item, const char sign)
+{
+	if (sign == '-')
+	{
+		player->info.maxHp -= item.maxHp;
+		player->info.hp -= item.hp;
+		player->maxMp -= item.maxMp;
+		player->mp -= item.mp;
+		player->info.atk -= item.atk;
+		player->criRate -= item.criRate;
+		player->criMulti -= item.criMulti;
+	}
+
+	else if (sign == '+')
+	{
+		player->info.maxHp += item.maxHp;
+		player->info.hp += item.hp;
+		player->maxMp += item.maxMp;
+		player->mp += item.mp;
+		player->info.atk += item.atk;
+		player->criRate += item.criRate;
+		player->criMulti += item.criMulti;
+	}
+
+	else
+		wprintf(L"Sign Error!\n\n");
+}
 void InitInven(Player* player)
 {
 	for (int i = 0; i < EQUIPITEM_NUM; ++i)
@@ -263,10 +290,8 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 			while (1)
 			{
 				system("cls");
-				wprintf(L"장비를 장착하자! 뭘 장착할까?\n");
 				PrintStatus(player);
-
-				wprintf(L"인벤토리의 번호를 입력하세요 (1~%d까지, 나가기는 0) : ", INVENTORY_SIZE);
+				wprintf(L"\n장비를 장착하자! 뭘 장착할까? (1~%d까지, 나가기는 0) : ", INVENTORY_SIZE);
 				int sel_idx;
 				scanf_s("%d", &sel_idx);
 
@@ -294,9 +319,14 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 		}
 		case 4:
 		{
-			PrintStatus(player);
-			wprintf(L"어느 장비를 해제하겠습니까? (해제하고자 하는 부위명 입력, 나가기는 취소 입력)\n");
-			UneqiupItem(player);
+			while (1)
+			{
+				PrintStatus(player);
+				wprintf(L"\n어느 장비를 해제하겠습니까? (해제하고자 하는 부위명 입력, 나가기는 0 입력)\n");
+
+				if (UneqiupItem(player))
+					break;
+			}
 			break;
 		}
 		case 5:
@@ -437,35 +467,17 @@ Item EquipItem(Player* player, const int item_idx)
 		if (wcscmp(player->EquipList[ITEM_EQUIPWEAPON].name, L"") != 0)
 		{
 			// 기존에 장착된 장비 스탯만큼 감소
-			player->info.maxHp -= player->EquipList[ITEM_EQUIPWEAPON].maxHp;
-			player->info.hp -= player->EquipList[ITEM_EQUIPWEAPON].hp;
-			player->maxMp -= player->EquipList[ITEM_EQUIPWEAPON].maxMp;
-			player->mp -= player->EquipList[ITEM_EQUIPWEAPON].mp;
-			player->info.atk -= player->EquipList[ITEM_EQUIPWEAPON].atk;
-			player->criRate -= player->EquipList[ITEM_EQUIPWEAPON].criRate;
-			player->criMulti -= player->EquipList[ITEM_EQUIPWEAPON].criMulti;
+			UpdatePlayerInfo(player, player->EquipList[ITEM_EQUIPWEAPON], '-');
 			
 			// 새로운 장비 스탯만큼 증가 후 기존 장비 인벤토리에 다시 저장
-			player->info.maxHp += NewItem.maxHp;
-			player->info.hp += NewItem.hp;
-			player->maxMp += NewItem.maxMp;
-			player->mp += NewItem.mp;
-			player->info.atk += NewItem.atk;
-			player->criRate += NewItem.criRate;
-			player->criMulti += NewItem.criMulti;
+			UpdatePlayerInfo(player, NewItem, '+');
 			player->ItemList[item_idx - 1] = player->EquipList[ITEM_EQUIPWEAPON];
 			return player->EquipList[ITEM_EQUIPWEAPON] = NewItem;
 		}
 
 		else
 		{
-			player->info.maxHp += NewItem.maxHp;
-			player->info.hp += NewItem.hp;
-			player->maxMp += NewItem.maxMp;
-			player->mp += NewItem.mp;
-			player->info.atk += NewItem.atk;
-			player->criRate += NewItem.criRate;
-			player->criMulti += NewItem.criMulti;
+			UpdatePlayerInfo(player, NewItem, '+');
 			player->ItemList[item_idx - 1] = MakeEmptyItem();
 			return player->EquipList[ITEM_EQUIPWEAPON] = NewItem;
 		}
@@ -474,34 +486,15 @@ Item EquipItem(Player* player, const int item_idx)
 	{
 		if (wcscmp(player->EquipList[ITEM_EQUIPBODY].name, L"") != 0)
 		{
-			player->info.maxHp -= player->EquipList[ITEM_EQUIPBODY].maxHp;
-			player->info.hp -= player->EquipList[ITEM_EQUIPBODY].hp;
-			player->maxMp -= player->EquipList[ITEM_EQUIPBODY].maxMp;
-			player->mp -= player->EquipList[ITEM_EQUIPBODY].mp;
-			player->info.atk -= player->EquipList[ITEM_EQUIPBODY].atk;
-			player->criRate -= player->EquipList[ITEM_EQUIPBODY].criRate;
-			player->criMulti -= player->EquipList[ITEM_EQUIPBODY].criMulti;
-
-			player->info.maxHp += NewItem.maxHp;
-			player->info.hp += NewItem.hp;
-			player->maxMp += NewItem.maxMp;
-			player->mp += NewItem.mp;
-			player->info.atk += NewItem.atk;
-			player->criRate += NewItem.criRate;
-			player->criMulti += NewItem.criMulti;
+			UpdatePlayerInfo(player, player->EquipList[ITEM_EQUIPBODY], '-');
+			UpdatePlayerInfo(player, NewItem, '+');
 			player->ItemList[item_idx - 1] = player->EquipList[ITEM_EQUIPBODY];
 			return player->EquipList[ITEM_EQUIPBODY] = NewItem;
 		}
 
 		else 
 		{
-			player->info.maxHp += NewItem.maxHp;
-			player->info.hp += NewItem.hp;
-			player->maxMp += NewItem.maxMp;
-			player->mp += NewItem.mp;
-			player->info.atk += NewItem.atk;
-			player->criRate += NewItem.criRate;
-			player->criMulti += NewItem.criMulti;
+			UpdatePlayerInfo(player, NewItem, '+');
 			player->ItemList[item_idx - 1] = MakeEmptyItem();
 			return player->EquipList[ITEM_EQUIPBODY] = NewItem;
 		}
@@ -510,33 +503,14 @@ Item EquipItem(Player* player, const int item_idx)
 	{
 		if (wcscmp(player->EquipList[ITEM_EQUIPHEAD].name, L"") != 0)
 		{
-			player->info.maxHp -= player->EquipList[ITEM_EQUIPHEAD].maxHp;
-			player->info.hp -= player->EquipList[ITEM_EQUIPHEAD].hp;
-			player->maxMp -= player->EquipList[ITEM_EQUIPHEAD].maxMp;
-			player->mp -= player->EquipList[ITEM_EQUIPHEAD].mp;
-			player->info.atk -= player->EquipList[ITEM_EQUIPHEAD].atk;
-			player->criRate -= player->EquipList[ITEM_EQUIPHEAD].criRate;
-			player->criMulti -= player->EquipList[ITEM_EQUIPHEAD].criMulti;
-			
-			player->info.maxHp += NewItem.maxHp;
-			player->info.hp += NewItem.hp;
-			player->maxMp += NewItem.maxMp;
-			player->mp += NewItem.mp;
-			player->info.atk += NewItem.atk;
-			player->criRate += NewItem.criRate;
-			player->criMulti += NewItem.criMulti;
+			UpdatePlayerInfo(player, player->EquipList[ITEM_EQUIPHEAD], '-');
+			UpdatePlayerInfo(player, NewItem, '+');
 			player->ItemList[item_idx - 1] = player->EquipList[ITEM_EQUIPHEAD];
 			return player->EquipList[ITEM_EQUIPHEAD] = NewItem;
 		}
 		else
 		{
-			player->info.maxHp += NewItem.maxHp;
-			player->info.hp += NewItem.hp;
-			player->maxMp += NewItem.maxMp;
-			player->mp += NewItem.mp;
-			player->info.atk += NewItem.atk;
-			player->criRate += NewItem.criRate;
-			player->criMulti += NewItem.criMulti;
+			UpdatePlayerInfo(player, NewItem, '+');
 			player->ItemList[item_idx - 1] = MakeEmptyItem();
 			return player->EquipList[ITEM_EQUIPHEAD] = NewItem;
 		}
@@ -545,33 +519,14 @@ Item EquipItem(Player* player, const int item_idx)
 	{
 		if (wcscmp(player->EquipList[ITEM_EQUIPGLOVES].name, L"") != 0)
 		{
-			player->info.maxHp -= player->EquipList[ITEM_EQUIPGLOVES].maxHp;
-			player->info.hp -= player->EquipList[ITEM_EQUIPGLOVES].hp;
-			player->maxMp -= player->EquipList[ITEM_EQUIPGLOVES].maxMp;
-			player->mp -= player->EquipList[ITEM_EQUIPGLOVES].mp;
-			player->info.atk -= player->EquipList[ITEM_EQUIPGLOVES].atk;
-			player->criRate -= player->EquipList[ITEM_EQUIPGLOVES].criRate;
-			player->criMulti -= player->EquipList[ITEM_EQUIPGLOVES].criMulti;
-			
-			player->info.maxHp += NewItem.maxHp;
-			player->info.hp += NewItem.hp;
-			player->maxMp += NewItem.maxMp;
-			player->mp += NewItem.mp;
-			player->info.atk += NewItem.atk;
-			player->criRate += NewItem.criRate;
-			player->criMulti += NewItem.criMulti;
+			UpdatePlayerInfo(player, player->EquipList[ITEM_EQUIPGLOVES], '-');
+			UpdatePlayerInfo(player, NewItem, '+');
 			player->ItemList[item_idx - 1] = player->EquipList[ITEM_EQUIPGLOVES];
 			return player->EquipList[ITEM_EQUIPGLOVES] = NewItem;
 		}
 		else
 		{
-			player->info.maxHp += NewItem.maxHp;
-			player->info.hp += NewItem.hp;
-			player->maxMp += NewItem.maxMp;
-			player->mp += NewItem.mp;
-			player->info.atk += NewItem.atk;
-			player->criRate += NewItem.criRate;
-			player->criMulti += NewItem.criMulti;
+			UpdatePlayerInfo(player, NewItem, '+');
 			player->ItemList[item_idx - 1] = MakeEmptyItem();
 			return player->EquipList[ITEM_EQUIPGLOVES] = NewItem;
 		}
@@ -580,33 +535,14 @@ Item EquipItem(Player* player, const int item_idx)
 	{
 		if (wcscmp(player->EquipList[ITEM_EQUIPLEG].name, L"") != 0)
 		{
-			player->info.maxHp -= player->EquipList[ITEM_EQUIPLEG].maxHp;
-			player->info.hp -= player->EquipList[ITEM_EQUIPLEG].hp;
-			player->maxMp -= player->EquipList[ITEM_EQUIPLEG].maxMp;
-			player->mp -= player->EquipList[ITEM_EQUIPLEG].mp;
-			player->info.atk -= player->EquipList[ITEM_EQUIPLEG].atk;
-			player->criRate -= player->EquipList[ITEM_EQUIPLEG].criRate;
-			player->criMulti -= player->EquipList[ITEM_EQUIPLEG].criMulti;
-			
-			player->info.maxHp += NewItem.maxHp;
-			player->info.hp += NewItem.hp;
-			player->maxMp += NewItem.maxMp;
-			player->mp += NewItem.mp;
-			player->info.atk += NewItem.atk;
-			player->criRate += NewItem.criRate;
-			player->criMulti += NewItem.criMulti;
+			UpdatePlayerInfo(player, player->EquipList[ITEM_EQUIPLEG], '-'); 
+			UpdatePlayerInfo(player, NewItem, '+');
 			player->ItemList[item_idx - 1] = player->EquipList[ITEM_EQUIPLEG];
 			return player->EquipList[ITEM_EQUIPLEG] = NewItem;
 		}
 		else
 		{
-			player->info.maxHp += NewItem.maxHp;
-			player->info.hp += NewItem.hp;
-			player->maxMp += NewItem.maxMp;
-			player->mp += NewItem.mp;
-			player->info.atk += NewItem.atk;
-			player->criRate += NewItem.criRate;
-			player->criMulti += NewItem.criMulti;
+			UpdatePlayerInfo(player, NewItem, '+');
 			player->ItemList[item_idx - 1] = MakeEmptyItem();
 			return player->EquipList[ITEM_EQUIPLEG] = NewItem;
 		}
@@ -619,21 +555,14 @@ Item EquipItem(Player* player, const int item_idx)
 	}
 }
 
-void UneqiupItem(Player* player)
+bool UneqiupItem(Player* player)
 {
 	wchar_t selEquip[20];
-	wscanf_s(L"%ws", selEquip, (unsigned)sizeof(selEquip));
+	wscanf_s(L"%ws", selEquip, (unsigned)_countof(selEquip));
 
 	if (wcscmp(selEquip, L"무기") == 0)
 	{
-		player->info.maxHp -= player->EquipList[ITEM_EQUIPWEAPON].maxHp;
-		player->info.hp -= player->EquipList[ITEM_EQUIPWEAPON].hp;
-		player->maxMp -= player->EquipList[ITEM_EQUIPWEAPON].maxMp;
-		player->mp -= player->EquipList[ITEM_EQUIPWEAPON].mp;
-		player->info.atk -= player->EquipList[ITEM_EQUIPWEAPON].atk;
-		player->criRate -= player->EquipList[ITEM_EQUIPWEAPON].criRate;
-		player->criMulti -= player->EquipList[ITEM_EQUIPWEAPON].criMulti;
-
+		UpdatePlayerInfo(player, player->EquipList[ITEM_EQUIPWEAPON], '-'); 
 		PutInven(player, &player->EquipList[ITEM_EQUIPWEAPON]);
 		player->EquipList[ITEM_EQUIPWEAPON] = MakeEmptyItem();
 		wprintf(L"무기를 해제했습니다!\n");
@@ -641,14 +570,7 @@ void UneqiupItem(Player* player)
 
 	else if (wcscmp(selEquip, L"몸통") == 0)
 	{
-		player->info.maxHp -= player->EquipList[ITEM_EQUIPBODY].maxHp;
-		player->info.hp -= player->EquipList[ITEM_EQUIPBODY].hp;
-		player->maxMp -= player->EquipList[ITEM_EQUIPBODY].maxMp;
-		player->mp -= player->EquipList[ITEM_EQUIPBODY].mp;
-		player->info.atk -= player->EquipList[ITEM_EQUIPBODY].atk;
-		player->criRate -= player->EquipList[ITEM_EQUIPBODY].criRate;
-		player->criMulti -= player->EquipList[ITEM_EQUIPBODY].criMulti;
-
+		UpdatePlayerInfo(player, player->EquipList[ITEM_EQUIPBODY], '-'); 
 		PutInven(player, &player->EquipList[ITEM_EQUIPBODY]);
 		player->EquipList[ITEM_EQUIPBODY] = MakeEmptyItem();
 		wprintf(L"몸통을 해제했습니다!\n");
@@ -656,14 +578,7 @@ void UneqiupItem(Player* player)
 
 	else if (wcscmp(selEquip, L"장갑") == 0)
 	{
-		player->info.maxHp -= player->EquipList[ITEM_EQUIPGLOVES].maxHp;
-		player->info.hp -= player->EquipList[ITEM_EQUIPGLOVES].hp;
-		player->maxMp -= player->EquipList[ITEM_EQUIPGLOVES].maxMp;
-		player->mp -= player->EquipList[ITEM_EQUIPGLOVES].mp;
-		player->info.atk -= player->EquipList[ITEM_EQUIPGLOVES].atk;
-		player->criRate -= player->EquipList[ITEM_EQUIPGLOVES].criRate;
-		player->criMulti -= player->EquipList[ITEM_EQUIPGLOVES].criMulti;
-
+		UpdatePlayerInfo(player, player->EquipList[ITEM_EQUIPGLOVES], '-'); 
 		PutInven(player, &player->EquipList[ITEM_EQUIPGLOVES]);
 		player->EquipList[ITEM_EQUIPGLOVES] = MakeEmptyItem();
 		wprintf(L"장갑을 해제했습니다!\n");
@@ -671,14 +586,7 @@ void UneqiupItem(Player* player)
 
 	else if (wcscmp(selEquip, L"다리") == 0)
 	{
-		player->info.maxHp -= player->EquipList[ITEM_EQUIPLEG].maxHp;
-		player->info.hp -= player->EquipList[ITEM_EQUIPLEG].hp;
-		player->maxMp -= player->EquipList[ITEM_EQUIPLEG].maxMp;
-		player->mp -= player->EquipList[ITEM_EQUIPLEG].mp;
-		player->info.atk -= player->EquipList[ITEM_EQUIPLEG].atk;
-		player->criRate -= player->EquipList[ITEM_EQUIPLEG].criRate;
-		player->criMulti -= player->EquipList[ITEM_EQUIPLEG].criMulti;
-
+		UpdatePlayerInfo(player, player->EquipList[ITEM_EQUIPLEG], '-'); 
 		PutInven(player, &player->EquipList[ITEM_EQUIPLEG]);
 		player->EquipList[ITEM_EQUIPLEG] = MakeEmptyItem();
 		wprintf(L"다리를 해제했습니다!\n");
@@ -686,31 +594,28 @@ void UneqiupItem(Player* player)
 
 	else if (wcscmp(selEquip, L"머리") == 0)
 	{
-		player->info.maxHp -= player->EquipList[ITEM_EQUIPHEAD].maxHp;
-		player->info.hp -= player->EquipList[ITEM_EQUIPHEAD].hp;
-		player->maxMp -= player->EquipList[ITEM_EQUIPHEAD].maxMp;
-		player->mp -= player->EquipList[ITEM_EQUIPHEAD].mp;
-		player->info.atk -= player->EquipList[ITEM_EQUIPHEAD].atk;
-		player->criRate -= player->EquipList[ITEM_EQUIPHEAD].criRate;
-		player->criMulti -= player->EquipList[ITEM_EQUIPHEAD].criMulti;
-
+		UpdatePlayerInfo(player, player->EquipList[ITEM_EQUIPHEAD], '-'); 
 		PutInven(player, &player->EquipList[ITEM_EQUIPHEAD]);
 		player->EquipList[ITEM_EQUIPHEAD] = MakeEmptyItem();
 		wprintf(L"머리를 해제했습니다!\n");
 	}
 
-	else if (wcscmp(selEquip, L"취소") == 0)
+	else if (wcscmp(selEquip, L"0") == 0)
 	{
 		system("cls");
-		return;
+		wprintf(L"장비 해제는 그만하자.\n");
+		Sleep(1000);
+		return true;
 	}
 
 	else
 	{
 		wprintf(L"잘못된 입력입니다!\n");
 	}
+
 	Sleep(1000);
 	system("cls");
+	return false;
 }
 
 void SellItem(Player* player)
@@ -741,7 +646,7 @@ void SellItem(Player* player)
 	Sleep(1000);
 	system("cls");
 	// 추후 판매 가능한 최대 횟수를 정하고 최대 횟수에 다다르면 바로 나가기 
-}
+}	 
 
 void flushInputBuffer()
 {
