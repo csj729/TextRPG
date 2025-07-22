@@ -41,6 +41,7 @@ C언어로 만든 간단한 텍스트 기반 로그라이크 게임입니다.
 - `PrintInven`: 현재 보유 아이템 출력
 - `PrintEquip` : 현재 장착된 장비 출력
 - `MakeEmptyItem` : Item을 초기화
+- `PickAndDropItem` : 인벤토리가 꽉 찼을 시 습득 아이템을 얻을 지 버릴 지 선택 후, 습득 선택 시 기존 인벤토리의 아이템을 골라 습득 아이템으로 변경 // 구현 중
 
 ### 3. 전투 및 드롭 시스템 (`Monster.cpp`)
 - `PrintStatus` : 몬스터의 스탯창 출력
