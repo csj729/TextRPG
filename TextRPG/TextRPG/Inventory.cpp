@@ -1,68 +1,68 @@
 #include "Inventory.h"
 
-Inven MakeEmptyItem() {
-	return { "", 0, 0, 0, 0, 0, 0, 0.0f, 0.0f , ITEM_NONE};
+Item MakeEmptyItem() {
+	return { L"", 0, 0, 0, 0, 0, 0, 0.0f, 0.0f , ITEM_NONE};
 }
 
 void PrintInven(const Player* player)
 {
-	std::cout << "현재 인벤토리 : ";
-	if (player->ItemList[0].name == "")
-		printf("인벤토리 비어있음!!\n");
+	wprintf(L"현재 인벤토리 : ");
+	if (wcscmp(player->ItemList[0].name, L"") == 0)
+		wprintf(L"인벤토리 비어있음!!\n");
 
 	else
 	{
-		for (int i = 0; player->ItemList[i].name != ""; i++)
-			printf("%d. %s ", i+1, player->ItemList[i].name.c_str());
+		for (int i = 0; (wcscmp(player->ItemList[i].name, L"") != 0) && i < INVENTORY_SIZE; i++)
+			wprintf(L"%d. %s ", i+1, player->ItemList[i].name);
 
-		printf("\n");
+		wprintf(L"\n");
 	}
 }
 
 void PrintEquip(const Player* player)
 {
-	printf("\n현재 장착된 장비\n");
-	printf("===================\n");
+	wprintf(L"\n현재 장착된 장비\n");
+	wprintf(L"===================\n");
 	for (int i = 0; i < EQUIPITEM_NUM; i++)
 	{
 		if (i == ITEM_EQUIPWEAPON)
 		{
-			if (player->EquipList[i].name == "")
-				printf("무기 장착 X\n");
+			if (wcscmp(player->EquipList[i].name, L"") == 0)
+				wprintf(L"무기 장착 X\n");
 			else
-				printf("무기 %s\n", player->EquipList[i].name.c_str());
+				wprintf(L"무기 %s\n", player->EquipList[i].name);
 		}
 		else if (i == ITEM_EQUIPBODY)
 		{
-			if (player->EquipList[i].name == "")
-				printf("몸통 장착 X\n");
+			if (wcscmp(player->EquipList[i].name, L"") == 0)
+				wprintf(L"몸통 장착 X\n");
 			else
-				printf("몸통 %s\n", player->EquipList[i].name.c_str());
+				wprintf(L"몸통 %s\n", player->EquipList[i].name);
 		}
 		else if (i == ITEM_EQUIPHEAD)
 		{
-			if (player->EquipList[i].name == "")
-				printf("머리 장착 X\n");
+			if (wcscmp(player->EquipList[i].name, L"") == 0)
+				wprintf(L"머리 장착 X\n");
 			else
-				printf("머리 %s\n", player->EquipList[i].name.c_str());
+				wprintf(L"머리 %s\n", player->EquipList[i].name);
 		}
 		else if (i == ITEM_EQUIPGLOVES)
 		{
-			if (player->EquipList[i].name == "")
-				printf("장갑 장착 X\n");
+			if (wcscmp(player->EquipList[i].name, L"") == 0)
+				wprintf(L"장갑 장착 X\n");
 			else
-				printf("장갑 %s\n", player->EquipList[i].name.c_str());
+				wprintf(L"장갑 %s\n", player->EquipList[i].name);
 		}
 		else if (i == ITEM_EQUIPLEG)
 		{
-			if (player->EquipList[i].name == "")
-				printf("다리 장착 X\n");
+			if (wcscmp(player->EquipList[i].name, L"") == 0)
+				wprintf(L"다리 장착 X\n");
 			else
-				printf("다리 %s\n", player->EquipList[i].name.c_str());
+				wprintf(L"다리 %s\n", player->EquipList[i].name);
 		}
 		else
 		{
-			printf("장착 장비 출력 오류오류오류오류!!!!!!!!!!!!\n\n\n");
+			wprintf(L"장착 장비 출력 오류오류오류오류!!!!!!!!!!!!\n\n\n");
 		}
 
 	}
@@ -70,18 +70,18 @@ void PrintEquip(const Player* player)
 void PutInven(Player* player, const Item* item)
 {
 	if (!item)
-		printf("넣을 아이템이 없습니다!\n");
+		wprintf(L"넣을 아이템이 없습니다!\n");
 
-	else if (player->ItemList[INVENTORY_SIZE - 1].name != "")
+	else if (wcscmp(player->ItemList[INVENTORY_SIZE - 1].name, L"") != 0)
 	{
-		printf("소지품이 가득찼습니다!!\n");
+		wprintf(L"소지품이 가득찼습니다!!\n");
 		return;
 	}
 	else
 	{
 		for (int i = 0; i < INVENTORY_SIZE; i++)
 		{	
-			if (player->ItemList[i].name == "")
+			if (wcscmp(player->ItemList[i].name, L"") == 0)
 			{
 				player->ItemList[i] = *item;
 				break;
@@ -94,7 +94,7 @@ void PutInven(Player* player, const Item* item)
 }
 
 int IsValidItem(Item* item) {
-	return item->name != "";
+	return wcscmp(item->name, L"") != 0;
 }
 
 // 빈 인덱스를 제거하고 앞으로 정렬

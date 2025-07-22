@@ -15,24 +15,24 @@ void SelectAnimal(Player* player)
 	Animal sel_ani;
 	while (1)
 	{
-		printf("1. 강아지  2. 고양이  3. 토끼  4. 거북이  5. 쿼카\n");
-		printf("나는 뭐야?? ");
+		wprintf(L"1. 강아지  2. 고양이  3. 토끼  4. 거북이  5. 쿼카\n");
+		wprintf(L"나는 뭐야?? ");
 
 		bool isCorrect = true;
-		scanf_s("%d", &sel_ani);
+		wscanf_s(L"%d", &sel_ani);
 		system("cls");
 
 		switch (sel_ani)
 		{
 		case Dog:
 		{
-			printf("난 강아지구나.\n\n");
-			printf("      / \\__\n");
-			printf("    (    @\\___\n");
-			printf("    /         O\n");
-			printf("   /   (_____/\n");
-			printf("  /_____/ U\n\n");
-			player->info.name = "강아지";
+			wprintf(L"난 강아지구나.\n\n");
+			wprintf(L"      / \\__\n");
+			wprintf(L"    (    @\\___\n");
+			wprintf(L"    /         O\n");
+			wprintf(L"   /   (_____/\n");
+			wprintf(L"  /_____/ U\n\n");
+			wcscpy_s(player->info.name, L"강아지");
 			player->info.maxHp = 100;
 			player->info.hp = player->info.maxHp;
 			player->info.atk = 10;
@@ -40,18 +40,18 @@ void SelectAnimal(Player* player)
 			player->mp = player->maxMp;
 			player->criRate = 0.2f;
 			player->criMulti = 1.5f;
-			player->SkillList[0] = { "꼬리흔들기", 50 };
-			player->SkillList[1] = { "멍멍펀치", 50 };
-			player->SkillList[2] = { "뼈다귀투척", 50 };
+			player->SkillList[0] = { L"꼬리흔들기", 50 };
+			player->SkillList[1] = { L"멍멍펀치", 50 };
+			player->SkillList[2] = { L"뼈다귀투척", 50 };
 			break;
 		}
 		case Cat:
 		{
-			printf("난 고양이구나.\n\n");
-			printf(" /\\_/\\\n");
-			printf("( o.o )\n");
-			printf(" > ^ <\n");
-			player->info.name = "고양이";
+			wprintf(L"난 고양이구나.\n\n");
+			wprintf(L" /\\_/\\\n");
+			wprintf(L"( o.o )\n");
+			wprintf(L" > ^ <\n");
+			wcscpy_s(player->info.name, L"고양이");
 			player->info.maxHp = 80;
 			player->info.hp = player->info.maxHp;
 			player->info.atk = 12;
@@ -59,21 +59,21 @@ void SelectAnimal(Player* player)
 			player->mp = player->maxMp;
 			player->criRate = 0.2f;
 			player->criMulti = 1.8f;
-			player->SkillList[0] = { "발톱할퀴기", 50 };
-			player->SkillList[1] = { "냥냥펀치", 50 };
-			player->SkillList[2] = { "야옹찌르기", 50 };
+			player->SkillList[0] = { L"발톱할퀴기", 50 };
+			player->SkillList[1] = { L"냥냥펀치", 50 };
+			player->SkillList[2] = { L"야옹찌르기", 50 };
 			break;
 		}
 		case Rabbit:
 		{
-			printf("난 토끼구나.\n\n");
-			printf("  (\\_/)\n");
-			printf("  ( -_-)\n");
-			printf(" / >     \n");
-			printf("/     \\\n");
-			printf("(       )\n");
-			printf(" ^^   ^^   \n\n");
-			player->info.name = "토끼";
+			wprintf(L"난 토끼구나.\n\n");
+			wprintf(L"  (\\_/)\n");
+			wprintf(L"  ( -_-)\n");
+			wprintf(L" / >     \n");
+			wprintf(L"/     \\\n");
+			wprintf(L"(       )\n");
+			wprintf(L" ^^   ^^   \n\n");
+			wcscpy_s(player->info.name, L"토끼");
 			player->info.maxHp = 80;
 			player->info.hp = player->info.maxHp;
 			player->info.atk = 10;
@@ -81,25 +81,25 @@ void SelectAnimal(Player* player)
 			player->mp = player->maxMp;
 			player->criRate = 0.3f;
 			player->criMulti = 1.5f;
-			player->SkillList[0] = { "당근화살", 50 };
-			player->SkillList[1] = { "깡총발차기", 50 };
-			player->SkillList[2] = { "당근발차기", 50 };
+			player->SkillList[0] = { L"당근화살", 50 };
+			player->SkillList[1] = { L"깡총발차기", 50 };
+			player->SkillList[2] = { L"당근발차기", 50 };
 			break;
 		}
 		case Turtle:
 		{
 
-			printf("난 거북이구나.\n\n");
-			printf("       _____     \n");
-			printf("     /       \\   \n");
-			printf(" ___|  o   o  |___\n");
-			printf("/     \\  ∇  /     \\\n");
-			printf("\\_____/-----\\_____/\n");
-			printf("   _|         |_   \n");
-			printf("  / |         | \\  \n");
-			printf(" /_/|         |\\_\\ \n");
-			printf("   /_/     \\_\\     \n\n");
-			player->info.name = "거북이";
+			wprintf(L"난 거북이구나.\n\n");
+			wprintf(L"       _____     \n");
+			wprintf(L"     /       \\   \n");
+			wprintf(L" ___|  o   o  |___\n");
+			wprintf(L"/     \\  ∇  /     \\\n");
+			wprintf(L"\\_____/-----\\_____/\n");
+			wprintf(L"   _|         |_   \n");
+			wprintf(L"  / |         | \\  \n");
+			wprintf(L" /_/|         |\\_\\ \n");
+			wprintf(L"   /_/     \\_\\     \n\n");
+			wcscpy_s(player->info.name, L"거북이");
 			player->info.maxHp = 150;
 			player->info.hp = player->info.maxHp;
 			player->info.atk = 5;
@@ -107,18 +107,18 @@ void SelectAnimal(Player* player)
 			player->mp = player->maxMp;
 			player->criRate = 0.2f;
 			player->criMulti = 1.5f;
-			player->SkillList[0] = { "몸통박치기", 50 };
-			player->SkillList[1] = { "거북충돌", 50 };
-			player->SkillList[2] = { "등껍질투척", 50 };
+			player->SkillList[0] = { L"몸통박치기", 50 };
+			player->SkillList[1] = { L"거북충돌", 50 };
+			player->SkillList[2] = { L"등껍질투척", 50 };
 			break;
 		}
 		case Quokka:
 		{
-			printf("난 쿼카구나.\n\n");
-			printf("  (\\__/)\n");
-			printf("  ( oㅅo)\n");
-			printf("  / 　 づ\n\n");
-			player->info.name = "쿼카";
+			wprintf(L"난 쿼카구나.\n\n");
+			wprintf(L"  (\\__/)\n");
+			wprintf(L"  ( oㅅo)\n");
+			wprintf(L"  / 　 づ\n\n");
+			wcscpy_s(player->info.name, L"쿼카");
 			player->info.maxHp = 80;
 			player->info.hp = player->info.maxHp;
 			player->info.atk = 10;
@@ -126,14 +126,14 @@ void SelectAnimal(Player* player)
 			player->mp = player->maxMp;
 			player->criRate = 0.2f;
 			player->criMulti = 1.5f;
-			player->SkillList[0] = { "파이어볼", 50 };
-			player->SkillList[1] = { "미소레이저", 50 };
-			player->SkillList[2] = { "아이스볼트", 50 };
+			player->SkillList[0] = { L"파이어볼", 50 };
+			player->SkillList[1] = { L"미소레이저", 50 };
+			player->SkillList[2] = { L"아이스볼트", 50 };
 			break;
 		}
 		default:
 		{
-			printf("내가 누군지 모르겠는걸..\n\n");
+			wprintf(L"내가 누군지 모르겠는걸..\n\n");
 			isCorrect = false;
 			break;
 		}
@@ -146,20 +146,20 @@ void SelectAnimal(Player* player)
 
 void PrintStatus(const Player* player)
 {
-	std::cout << "=== 플레이어 상태 ===\n";
-	std::cout << "이름: " << player->info.name << "\n";
-	std::cout << "레벨: " << player->level << "\n";
-	std::cout << "HP: " << player->info.hp << "/" << player->info.maxHp << "\n";
-	std::cout << "공격력: " << player->info.atk << "\n";
-	std::cout << "MP: " << player->mp << "/" << player->maxMp << "\n";
-	std::cout << "치명타 확률: " << player->criRate << "\n";
-	std::cout << "치명타 배율: " << player->criMulti << "\n";
-	std::cout << "현재 경험치: " << player->info.exp << "/" << player->maxExp << "\n";
-	std::cout << "현재 소지 골드: " << player->info.gold << "Gold" << "\n";
-	PrintEquip(player);
-	printf("\n");
-	PrintInven(player);
-	
+	wprintf(L"=== 플레이어 상태 ===\n");
+	wprintf(L"이름: %ls\n", player->info.name);
+	wprintf(L"레벨: %d\n", player->level);
+	wprintf(L"HP: %d/%d\n", player->info.hp, player->info.maxHp);
+	wprintf(L"공격력: %d\n", player->info.atk);
+	wprintf(L"MP: %d/%d\n", player->mp, player->maxMp);
+	wprintf(L"치명타 확률: %.2f\n", player->criRate);
+	wprintf(L"치명타 배율: %.2f\n", player->criMulti);
+	wprintf(L"현재 경험치: %d/%d\n", player->info.exp, player->maxExp);
+	wprintf(L"현재 소지 골드: %dGold\n", player->info.gold);
+
+	PrintEquip(player);     // 장비 출력 함수
+	wprintf(L"\n");
+	PrintInven(player);     // 인벤토리 출력 함수
 }
 
 void UpdateExpAndLevel(Player* player, const int exp)
@@ -190,8 +190,8 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 	while (1)
 	{
 		system("cls");
-		printf("무슨 행동을 할까??\n");
-		printf("1. 탑을 오른다    2. 상태를 확인한다    3. 장비를 장착한다   4. 장비를 해제한다    5. 저장    6. 불러오기    7. 종료\n");
+		wprintf(L"무슨 행동을 할까??\n");
+		wprintf(L"1. 탑을 오른다    2. 상태를 확인한다    3. 장비를 장착한다   4. 장비를 해제한다    5. 저장    6. 불러오기    7. 종료\n");
 
 		int select;
 		bool isCorrect = true;
@@ -203,27 +203,28 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 		case 1:
 		{
 			floorNum++;
-			printf("%d층에 도착했다.\n", floorNum);
+			wprintf(L"%d층에 도착했다.\n", floorNum);
 
 			int random = rand() % 100;
 
 			if (random < 70)
 			{
-				int arr_size = sizeof(monsterNames) / sizeof(std::string);
-				std::string monsterName = PickRandomName(monsterNames, arr_size);
+				int arr_size = sizeof(monsterNames) / sizeof(wchar_t*);
+				const wchar_t* monsterName = PickRandomName(monsterNames, arr_size);
 				*monster = CreateMonster(monsterName);
-				printf("몬스터와 마주쳤다! 전투 시작!\n\n");
+				wprintf(L"몬스터와 마주쳤다! 전투 시작!\n\n");
 				Battle(player, monster);
 			}
 			else if (random < 95)
 			{
 				while (1)
 				{
-					printf("수상한 상인을 만났다.\n");
-					printf("1.구매    2.판매    3.무시하기\n");
+					wprintf(L"수상한 상인을 만났다.\n");
+					wprintf(L"1.구매    2.판매    3.무시하기\n");
 
 					int selNum;
 					scanf_s("%d", &selNum);
+					system("cls");
 
 					if (selNum == 1)
 					{
@@ -238,14 +239,14 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 						break;
 				}
 				
-				printf("상인을 무시한다. 왠지 뒤에서 중얼거리는 듯하다.\n");
+				wprintf(L"상인을 무시한다. 왠지 뒤에서 중얼거리는 듯하다.\n");
 				Sleep(2000);
 				break;
 				
 			}
 			else
 			{
-				printf("보물상자를 발견했다!\n\n");
+				wprintf(L"보물상자를 발견했다!\n\n");
 				OpenBox(player);
 			}
 			break;
@@ -262,10 +263,10 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 			while (1)
 			{
 				system("cls");
-				printf("장비를 장착하자! 뭘 장착할까?\n");
+				wprintf(L"장비를 장착하자! 뭘 장착할까?\n");
 				PrintStatus(player);
 
-				printf("인벤토리의 번호를 입력하세요 (1~%d까지, 나가기는 0) : ", INVENTORY_SIZE);
+				wprintf(L"인벤토리의 번호를 입력하세요 (1~%d까지, 나가기는 0) : ", INVENTORY_SIZE);
 				int sel_idx;
 				scanf_s("%d", &sel_idx);
 
@@ -276,14 +277,14 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 				}
 
 				else if (sel_idx < 0 || sel_idx > 10)
-					printf("잘못된 입력입니다. 다시 입력해주세요!\n");
+					wprintf(L"잘못된 입력입니다. 다시 입력해주세요!\n");
 
 				else if ( player->ItemList[sel_idx - 1].itemType > ITEM_EQUIPLEG)
-					printf("장비 아이템이 아닙니다. 다시 선택해주세요!\n");
+					wprintf(L"장비 아이템이 아닙니다. 다시 선택해주세요!\n");
 
 				else
 				{
-					printf("%s를 장착했습니다!\n", EquipItem(player, sel_idx).name.c_str());
+					wprintf(L"%s를 장착했습니다!\n", EquipItem(player, sel_idx).name);
 					CompactItemList(player);
 				}
 
@@ -294,7 +295,7 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 		case 4:
 		{
 			PrintStatus(player);
-			printf("어느 장비를 해제하겠습니까? (해제하고자 하는 부위명 입력, 나가기는 취소 입력)\n");
+			wprintf(L"어느 장비를 해제하겠습니까? (해제하고자 하는 부위명 입력, 나가기는 취소 입력)\n");
 			UneqiupItem(player);
 			break;
 		}
@@ -312,13 +313,13 @@ void SelectAction(Player* player, Monster* monster, Merchant* merchant)
 		}
 		case 7:
 		{
-			printf("다시 잠에 빠져든다...\n");
-			printf("Game Over!\n");
+			wprintf(L"다시 잠에 빠져든다...\n");
+			wprintf(L"Game Over!\n");
 			exit(0);
 		}
 		default:
 		{
-			printf("이해할 수 없는 행동이야.\n\n");
+			wprintf(L"이해할 수 없는 행동이야.\n\n");
 			isCorrect = false;
 			break;
 		}
@@ -334,14 +335,14 @@ void Battle(Player* player, Monster* monster)
 	while (1)
 	{
 		PrintStatus(monster);
-		printf("\n\n");
+		wprintf(L"\n\n");
 		PrintStatus(player);
 		
 
 		int act_sel, realDmg_PtoM = 0, realDmg_MtoP = 0;
 		bool isCorrect = true;
-		printf("\n1.공격   2.스킬   3.아이템\n");
-		printf("행동 선택 : ");
+		wprintf(L"\n1.공격   2.스킬   3.아이템\n");
+		wprintf(L"행동 선택 : ");
 		scanf_s("%d", &act_sel);
 
 		system("cls");
@@ -350,7 +351,7 @@ void Battle(Player* player, Monster* monster)
 		case 1:
 		{
 			// 최종데미지 계산 로직 실행 후 몬스터 hp - 최종데미지
-			printf("공격!!\n");
+			wprintf(L"공격!!\n");
 			realDmg_PtoM = player->info.atk;
 			monster->info.hp -= realDmg_PtoM;
 			break;
@@ -358,9 +359,9 @@ void Battle(Player* player, Monster* monster)
 		case 2:
 		{
 			int selNum;
-			printf("스킬 사용!!\n");
+			wprintf(L"스킬 사용!!\n");
 			PrintSkill(player);
-			printf("스킬을 선택해야해 : ");
+			wprintf(L"스킬을 선택해야해 : ");
 			scanf_s("%d", &selNum);
 
 			UseSkill(player, &realDmg_PtoM, selNum);
@@ -370,33 +371,33 @@ void Battle(Player* player, Monster* monster)
 		}
 		case 3:
 		{
-			printf("아이템 사용!\n");
+			wprintf(L"아이템 사용!\n");
 			// 보유 아이템 출력 후 선택 구현
 			break;
 		}
 		default:
 		{
-			printf("이상한 행동은 안돼.\n");
+			wprintf(L"이상한 행동은 안돼.\n");
 			isCorrect = false;
 			break;
 		}
 		}
 
-		printf_s("%s에게 %d 데미지를 주었습니다!!\n", monster->info.name.c_str(), realDmg_PtoM);
+		wprintf_s(L"%s에게 %d 데미지를 주었습니다!!\n", monster->info.name, realDmg_PtoM);
 		// 몬스터 사망 시 전리품 획득과 전투 종료
 		if (monster->info.hp <= 0)
 		{
-			printf("%s를 처치했다!!\n", monster->info.name.c_str());
-			printf("%d의 경험치를 얻었다!!\n", monster->info.exp);
-			printf("%d의 Gold를 얻었다!!\n", monster->info.gold);
+			wprintf(L"%s를 처치했다!!\n", monster->info.name);
+			wprintf(L"%d의 경험치를 얻었다!!\n", monster->info.exp);
+			wprintf(L"%d의 Gold를 얻었다!!\n", monster->info.gold);
 
 			UpdateExpAndLevel(player, monster->info.exp);
 			player->info.gold += monster->info.gold;
 			const Item* dropItem = RollDrop(monster->dropTable);
 			if (!dropItem)
-				printf("아이템이 드랍되지 않았습니다..\n\n");
+				wprintf(L"아이템이 드랍되지 않았습니다..\n\n");
 			else
-				printf("%s를 획득했습니다!!\n\n", dropItem->name.c_str());
+				wprintf(L"%s를 획득했습니다!!\n\n", dropItem->name);
 
 			PutInven(player, dropItem);
 			Sleep(2000);
@@ -411,13 +412,13 @@ void Battle(Player* player, Monster* monster)
 			// 몬스터의 최종 데미지 계산 후 플레이어 hp - 최종데미지
 			realDmg_MtoP = monster->info.atk;
 			player->info.hp -= realDmg_MtoP;
-			printf_s("%s는 %d 피해를 입었습니다!!\n\n", player->info.name.c_str(), realDmg_MtoP);
+			wprintf_s(L"%s는 %d 피해를 입었습니다!!\n\n", player->info.name, realDmg_MtoP);
 		}
 
 		// 플레이어 사망 시 게임 오버
 		if (player->info.hp <= 0)
 		{
-			printf("%s는 쓰러졌다...\n", player->info.name.c_str());
+			wprintf(L"%s는 쓰러졌다...\n", player->info.name);
 			exit(0);
 		}
 
@@ -433,7 +434,7 @@ Item EquipItem(Player* player, const int item_idx)
 	if (NewItem.itemType == ITEM_EQUIPWEAPON)
 	{
 		// 동일 부위에 이미 장착된 장비 존재
-		if (player->EquipList[ITEM_EQUIPWEAPON].name != "")
+		if (wcscmp(player->EquipList[ITEM_EQUIPWEAPON].name, L"") != 0)
 		{
 			// 기존에 장착된 장비 스탯만큼 감소
 			player->info.maxHp -= player->EquipList[ITEM_EQUIPWEAPON].maxHp;
@@ -471,7 +472,7 @@ Item EquipItem(Player* player, const int item_idx)
 	}
 	else if (NewItem.itemType == ITEM_EQUIPBODY)
 	{
-		if (player->EquipList[ITEM_EQUIPBODY].name != "")
+		if (wcscmp(player->EquipList[ITEM_EQUIPBODY].name, L"") != 0)
 		{
 			player->info.maxHp -= player->EquipList[ITEM_EQUIPBODY].maxHp;
 			player->info.hp -= player->EquipList[ITEM_EQUIPBODY].hp;
@@ -507,7 +508,7 @@ Item EquipItem(Player* player, const int item_idx)
 	}
 	else if (NewItem.itemType == ITEM_EQUIPHEAD)
 	{
-		if (player->EquipList[ITEM_EQUIPHEAD].name != "")
+		if (wcscmp(player->EquipList[ITEM_EQUIPHEAD].name, L"") != 0)
 		{
 			player->info.maxHp -= player->EquipList[ITEM_EQUIPHEAD].maxHp;
 			player->info.hp -= player->EquipList[ITEM_EQUIPHEAD].hp;
@@ -542,7 +543,7 @@ Item EquipItem(Player* player, const int item_idx)
 	}
 	else if (NewItem.itemType == ITEM_EQUIPGLOVES)
 	{
-		if (player->EquipList[ITEM_EQUIPGLOVES].name != "")
+		if (wcscmp(player->EquipList[ITEM_EQUIPGLOVES].name, L"") != 0)
 		{
 			player->info.maxHp -= player->EquipList[ITEM_EQUIPGLOVES].maxHp;
 			player->info.hp -= player->EquipList[ITEM_EQUIPGLOVES].hp;
@@ -577,7 +578,7 @@ Item EquipItem(Player* player, const int item_idx)
 	}
 	else if (NewItem.itemType == ITEM_EQUIPLEG)
 	{
-		if (player->EquipList[ITEM_EQUIPLEG].name != "")
+		if (wcscmp(player->EquipList[ITEM_EQUIPLEG].name, L"") != 0)
 		{
 			player->info.maxHp -= player->EquipList[ITEM_EQUIPLEG].maxHp;
 			player->info.hp -= player->EquipList[ITEM_EQUIPLEG].hp;
@@ -612,7 +613,7 @@ Item EquipItem(Player* player, const int item_idx)
 	}
 	else
 	{
-		printf("장비 장착 오류오류오류오류!!!! NewItem 함수 확인\n");
+		wprintf(L"장비 장착 오류오류오류오류!!!! NewItem 함수 확인\n");
 		Item dummy = { 0 };
 		return dummy;
 	}
@@ -620,10 +621,10 @@ Item EquipItem(Player* player, const int item_idx)
 
 void UneqiupItem(Player* player)
 {
-	char selEquip[20];
-	scanf_s("%s", selEquip, (unsigned)sizeof(selEquip));
+	wchar_t selEquip[20];
+	wscanf_s(L"%ws", selEquip, (unsigned)sizeof(selEquip));
 
-	if (strcmp(selEquip, "무기") == 0)
+	if (wcscmp(selEquip, L"무기") == 0)
 	{
 		player->info.maxHp -= player->EquipList[ITEM_EQUIPWEAPON].maxHp;
 		player->info.hp -= player->EquipList[ITEM_EQUIPWEAPON].hp;
@@ -635,10 +636,10 @@ void UneqiupItem(Player* player)
 
 		PutInven(player, &player->EquipList[ITEM_EQUIPWEAPON]);
 		player->EquipList[ITEM_EQUIPWEAPON] = MakeEmptyItem();
-		printf("무기를 해제했습니다!\n");
+		wprintf(L"무기를 해제했습니다!\n");
 	}
 
-	else if (strcmp(selEquip, "몸통") == 0)
+	else if (wcscmp(selEquip, L"몸통") == 0)
 	{
 		player->info.maxHp -= player->EquipList[ITEM_EQUIPBODY].maxHp;
 		player->info.hp -= player->EquipList[ITEM_EQUIPBODY].hp;
@@ -650,10 +651,10 @@ void UneqiupItem(Player* player)
 
 		PutInven(player, &player->EquipList[ITEM_EQUIPBODY]);
 		player->EquipList[ITEM_EQUIPBODY] = MakeEmptyItem();
-		printf("몸통을 해제했습니다!\n");
+		wprintf(L"몸통을 해제했습니다!\n");
 	}
 
-	else if (strcmp(selEquip, "장갑") == 0)
+	else if (wcscmp(selEquip, L"장갑") == 0)
 	{
 		player->info.maxHp -= player->EquipList[ITEM_EQUIPGLOVES].maxHp;
 		player->info.hp -= player->EquipList[ITEM_EQUIPGLOVES].hp;
@@ -665,10 +666,10 @@ void UneqiupItem(Player* player)
 
 		PutInven(player, &player->EquipList[ITEM_EQUIPGLOVES]);
 		player->EquipList[ITEM_EQUIPGLOVES] = MakeEmptyItem();
-		printf("장갑을 해제했습니다!\n");
+		wprintf(L"장갑을 해제했습니다!\n");
 	}
 
-	else if (strcmp(selEquip, "다리") == 0)
+	else if (wcscmp(selEquip, L"다리") == 0)
 	{
 		player->info.maxHp -= player->EquipList[ITEM_EQUIPLEG].maxHp;
 		player->info.hp -= player->EquipList[ITEM_EQUIPLEG].hp;
@@ -680,10 +681,10 @@ void UneqiupItem(Player* player)
 
 		PutInven(player, &player->EquipList[ITEM_EQUIPLEG]);
 		player->EquipList[ITEM_EQUIPLEG] = MakeEmptyItem();
-		printf("다리를 해제했습니다!\n");
+		wprintf(L"다리를 해제했습니다!\n");
 	}
 
-	else if (strcmp(selEquip, "머리") == 0)
+	else if (wcscmp(selEquip, L"머리") == 0)
 	{
 		player->info.maxHp -= player->EquipList[ITEM_EQUIPHEAD].maxHp;
 		player->info.hp -= player->EquipList[ITEM_EQUIPHEAD].hp;
@@ -695,10 +696,10 @@ void UneqiupItem(Player* player)
 
 		PutInven(player, &player->EquipList[ITEM_EQUIPHEAD]);
 		player->EquipList[ITEM_EQUIPHEAD] = MakeEmptyItem();
-		printf("머리를 해제했습니다!\n");
+		wprintf(L"머리를 해제했습니다!\n");
 	}
 
-	else if (strcmp(selEquip, "취소") == 0)
+	else if (wcscmp(selEquip, L"취소") == 0)
 	{
 		system("cls");
 		return;
@@ -706,7 +707,7 @@ void UneqiupItem(Player* player)
 
 	else
 	{
-		printf("잘못된 입력입니다!\n");
+		wprintf(L"잘못된 입력입니다!\n");
 	}
 	Sleep(1000);
 	system("cls");
@@ -714,12 +715,12 @@ void UneqiupItem(Player* player)
 
 void SellItem(Player* player)
 {
-	while (player->ItemList[0].name != "")
+	while (wcscmp(player->ItemList[0].name, L"") != 0)
 	{
 		system("cls");
 		int selNum;
 		PrintInven(player);
-		printf("판매할 아이템을 골라야 해! (0은 나가기)\n");
+		wprintf(L"판매할 아이템을 골라야 해! (0은 나가기)\n");
 		scanf_s("%d", &selNum);
 
 		if (selNum == 0)
@@ -729,14 +730,14 @@ void SellItem(Player* player)
 		}
 
 		player->info.gold += player->ItemList[selNum - 1].gold / 10;
-		printf("%dGold 획득!\n", player->ItemList[selNum - 1].gold / 10);
+		wprintf(L"%dGold 획득!\n", player->ItemList[selNum - 1].gold / 10);
 		player->ItemList[selNum - 1] = MakeEmptyItem();
 		CompactItemList(player);
 		Sleep(1000);
 
 	}
 
-	printf("판매할 아이템이 없어..\n");
+	wprintf(L"판매할 아이템이 없어..\n");
 	Sleep(1000);
 	system("cls");
 	// 추후 판매 가능한 최대 횟수를 정하고 최대 횟수에 다다르면 바로 나가기 
@@ -744,112 +745,104 @@ void SellItem(Player* player)
 
 void flushInputBuffer()
 {
-	int c;
-	while ((c = getchar()) != '\n' && c != EOF);
+	while (_kbhit()) _getwch();
 }
 
-int SkillNameInput(const char* skillName, int timeLimitSec)
-{
-	char input[MAX_INPUT] = { 0 };
-	int idx = 0;
+bool SkillNameInput(const wchar_t* skillName, int timeLimitSec) {
+	setlocale(LC_ALL, "");  // 한글 입력/출력 설정
 
-	time_t start = time(NULL);
-	time_t current = start;
+	wchar_t input[MAX_INPUT] = { 0 };
+	int idx = 0;
 	int lastDisplayed = -1;
 
-	printf("스킬명을 %d초 안에 정확히 입력하세요: %s\n", timeLimitSec, skillName);
-	printf("> ");
+	time_t start = time(NULL);
+	time_t current;
 
-	while ((current - start) < timeLimitSec) {
+	wprintf(L"스킬명을 %d초 안에 정확히 입력하세요: %ls\n", timeLimitSec, skillName);
+	wprintf(L"> ");
+	fflush(stdout);
+
+	while (1) {
 		current = time(NULL);
-		int timeLeft = timeLimitSec - (int)(current - start);
+		int elapsed = (int)(current - start);
+		int timeLeft = timeLimitSec - elapsed;
 
 		if (timeLeft != lastDisplayed) {
 			lastDisplayed = timeLeft;
-			printf("\r> %s", input);
-			printf("   [남은 시간: %2d초]   ", timeLeft);
+			wprintf(L"\r> %ls   [남은 시간: %2d초]   ", input, timeLeft);
 			fflush(stdout);
 		}
 
-		if (_kbhit()) {
-			char ch = _getch();
+		if (elapsed >= timeLimitSec) {
+			break;
+		}
 
-			if (ch == '\r') {
-				input[idx] = '\0';
+		if (_kbhit()) {
+			wchar_t ch = _getwch();
+
+			if (ch == L'\r') {
 				break;
 			}
-			else if (ch == '\b' && idx > 0) {
-				idx--;
-				input[idx] = '\0';
-				printf("\r> %s \b\b[남은 시간: %2d초]   ", input, timeLeft);
-				fflush(stdout);
+			else if (ch == L'\b') {
+				if (idx > 0) {
+					idx--;
+					input[idx] = L'\0';
+				}
 			}
-			else if (idx < MAX_INPUT - 1 && ch >= 32 && ch <= 126) {
+			else if (iswprint(ch) && idx < MAX_INPUT - 1) {
 				input[idx++] = ch;
-				input[idx] = '\0';
-				printf("\r> %s[남은 시간: %2d초]   ", input, timeLeft);
-				fflush(stdout);
+				input[idx] = L'\0';
 			}
 		}
 
 		Sleep(10);
 	}
 
-	printf("\n");
+	wprintf(L"\n");
 
-	// 시간 초과
-	if ((time(NULL) - start) >= timeLimitSec && idx == 0) {
-		printf("[시간 초과!] 스킬 실패!\n");
-
-		// 버퍼 클리어
-		flushInputBuffer();
-		return 0;
+	if (wcslen(input) == 0) {
+		wprintf(L"[시간 초과!] 스킬 실패!\n");
+		return false;
 	}
 
-	// 입력 검증
-	if (strcmp(input, skillName) == 0) {
-		printf("정확하게 입력했습니다! 스킬 발동!\n");
-		flushInputBuffer();
-		return 1;
+	if (wcscmp(input, skillName) == 0) {
+		wprintf(L"정확하게 입력했습니다! 스킬 발동!\n");
+		return true;
 	}
 	else {
-		printf("잘못된 입력입니다. 스킬 실패!\n");
-		flushInputBuffer();
-		return 0;
+		wprintf(L"잘못된 입력입니다. 스킬 실패!\n");
+		return false;
 	}
 }
 
-int SkillRandomInput(int pressCount, int timeLimitSeconds)
+bool SkillRandomInput(int pressCount, int timeLimitSeconds)
 {
-	char targets[10];
+	wchar_t targets[10];
 
-	printf("%d초 안에 다음 버튼들을 순서대로 누르세요:\n", timeLimitSeconds);
+	wprintf(L"%d초 안에 다음 버튼들을 순서대로 누르세요:\n", timeLimitSeconds);
 
 	for (int i = 0; i < pressCount; ++i)
 	{
-		targets[i] = 'A' + rand() % 26;
-		printf("%c ", targets[i]);
+		targets[i] = L'A' + rand() % 26;
+		wprintf(L"%c ", targets[i]);
 	}
-	printf("\n");
+	wprintf(L"\n");
 
 	clock_t start = clock();
 
 	for (int i = 0; i < pressCount; ++i)
 	{
-		char input;
-		printf("%d번째 버튼 입력: ", i + 1);
+		wchar_t input;
+		wprintf(L"%d번째 버튼 입력: ", i + 1);
 
-		// 공백 문자 무시하고 한 문자 입력
+		// 공백 문자 무시하고 한 문자 입력 (Enter 필요 없음)
 		do {
-			input = getchar();
-		} while (input == '\n' || input == '\r' || input == ' ');
-
-		// 버퍼 정리 (남은 입력 제거)
-		while (getchar() != '\n' && !feof(stdin));
+			input = _getwch();
+		} while (iswspace(input));  // wide 문자 공백 체크
 
 		if (input != targets[i])
 		{
-			printf("잘못된 버튼! 스킬 실패!\n");
+			wprintf(L"\n잘못된 버튼! 스킬 실패!\n");
 			return 0;
 		}
 
@@ -857,77 +850,87 @@ int SkillRandomInput(int pressCount, int timeLimitSeconds)
 		double elapsed = (double)(now - start) / CLOCKS_PER_SEC;
 		if (elapsed > timeLimitSeconds)
 		{
-			printf("시간 초과! (%.2f초)\n", elapsed);
+			wprintf(L"\n시간 초과! (%.2f초)\n", elapsed);
 			return 0;
 		}
+
+		wprintf(L"%c\n", input); // 입력 확인 출력
 	}
 
-	printf("성공! 스킬 발동!\n");
+	wprintf(L"성공! 스킬 발동!\n");
 	return 1;
 }
 
-const char* ArrowName(int code) {
+const wchar_t* ArrowName(int code) {
 	switch (code) {
-	case ARROW_UP: return "↑";
-	case ARROW_DOWN: return "↓";
-	case ARROW_LEFT: return "←";
-	case ARROW_RIGHT: return "→";
-	default: return "?";
+	case ARROW_UP: return L"↑";
+	case ARROW_DOWN: return L"↓";
+	case ARROW_LEFT: return L"←";
+	case ARROW_RIGHT: return L"→";
+	default: return L"?";
 	}
 }
 
-int SkillArrowCommandInput(const int* expectedCommand, int length, int timeLimitMs) {
-	printf(">> 정해진 방향키를 %d초 내에 순서대로 입력하세요!\n", timeLimitMs / 1000);
-	printf(">> 입력할 순서: ");
+bool SkillArrowCommandInput(const int* expectedCommand, int length, int timeLimitMs)
+{
+	wprintf(L">> 정해진 방향키를 %d초 내에 순서대로 입력하세요!\n", timeLimitMs / 1000);
+	wprintf(L">> 입력할 순서: ");
 	for (int i = 0; i < length; ++i)
-		printf("%s ", ArrowName(expectedCommand[i]));
-	printf("\n\n");
+		wprintf(L"%s ", ArrowName(expectedCommand[i]));
+	wprintf(L"\n\n");
 
-	DWORD startTime = GetTickCount();
+	DWORD startTime = GetTickCount64();
 
-	for (int i = 0; i < length; ++i) {
-		while (!_kbhit()) {
-			if (GetTickCount() - startTime > timeLimitMs) {
-				printf("\n[실패] 시간 초과!\n");
-				return 0;
+	for (int i = 0; i < length; ++i)
+	{
+		while (!_kbhit())
+		{
+			if (GetTickCount64() - startTime > (DWORD)timeLimitMs)
+			{
+				wprintf(L"\n[실패] 시간 초과!\n");
+				return false;
 			}
 		}
 
 		int ch = _getch();
-		if (ch == 0 || ch == 224) {
+		if (ch == 0 || ch == 224)
+		{
 			int arrow = _getch();
 
-			if (arrow != expectedCommand[i]) {
-				printf("[실패] 잘못된 방향 입력 (%s)\n", ArrowName(arrow));
-				return 0;
+			if (arrow != expectedCommand[i])
+			{
+				wprintf(L"[실패] 잘못된 방향 입력 (%s)\n", ArrowName(arrow));
+				return false;
 			}
-			else {
-				printf("[성공] 입력: %s\n", ArrowName(arrow));
+			else
+			{
+				wprintf(L"[성공] 입력: %s\n", ArrowName(arrow));
 			}
 		}
-		else {
-			printf("[실패] 방향키가 아닙니다.\n");
-			return 0;
+		else
+		{
+			wprintf(L"[실패] 방향키가 아닙니다.\n");
+			return false;
 		}
 	}
 
-	printf("\n[성공] 스킬 발동!\n");
-	return 1;
+	wprintf(L"\n[성공] 스킬 발동!\n");
+	return true;
 }
 
 void PrintSkill(Player* player)
 {
 	for (int i = 0; i < SKILL_SLOTNUM; i++)
-		printf("%d.%s   ", i + 1, player->SkillList[i].name.c_str());
+		wprintf(L"%d.%s   ", i + 1, player->SkillList[i].name);
 
-	printf("\n");
+	wprintf(L"\n");
 }
 
 void UseSkill(Player* player, int* realDmg_PtoM, const int selNum)
 {
 	if (selNum == 1)
 	{
-		if (SkillNameInput(player->SkillList[selNum - 1].name.c_str(), 4))
+		if (SkillNameInput(player->SkillList[selNum - 1].name, 4))
 			*realDmg_PtoM += player->SkillList[selNum - 1].atk;
 	}
 
@@ -946,6 +949,6 @@ void UseSkill(Player* player, int* realDmg_PtoM, const int selNum)
 
 	else
 	{
-		printf("잘못된 입력! 다시 입력하세요.\n");
+		wprintf(L"잘못된 입력! 다시 입력하세요.\n");
 	}
 }

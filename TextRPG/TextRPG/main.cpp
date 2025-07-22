@@ -8,6 +8,8 @@ StoreTable storeTable[STORETABLE_MAXNUM];
 
 int main()
 {
+	setlocale(LC_ALL, "");
+
 	srand(unsigned(time(NULL)));
 	Player player;
 	Monster monster;

@@ -15,7 +15,7 @@ void OpenBox(Player* player)
 	{
 		// 장비 획득, 쓸만한 세트아이템 나오게
 		Item NewItem;
-		printf("%s가 나왔다!!!\n", NewItem.name.c_str());
+		printf("%s가 나왔다!!!\n", NewItem.name);
 		PutInven(player, &NewItem);
 	}
 	else
